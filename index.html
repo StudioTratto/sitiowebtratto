@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Estudio Tratto — Arquitectura y Construcción</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
+<script>
+  // DECIDE SI MOSTRAR INTRO ANTES DEL RENDER
+
+</script>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header class="header">
+  <div class="header-inner">
+
+    <img src="images/logo-tratto-blanco.svg" alt="Estudio Tratto" class="logo logo-white">
+<img src="images/logo-tratto-negro.svg" alt="Estudio Tratto" class="logo logo-black">
+
+    <!-- BOTÓN HAMBURGUESA -->
+    <button class="menu-toggle" aria-label="Abrir menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- NAV -->
+    <nav class="nav">
+      <a href="#equipo" class="enter-site">Nosotros</a>
+      <a href="#servicios" class="enter-site">Servicios</a>
+      <a href="proyectos.html" class="enter-site">Proyectos</a>
+      <a href="contacto.html" class="enter-site">Contacto</a>
+
+
+
+  </div>
+</header>
+
+
+
+<!-- HERO SLIDESHOW (BANNER PRINCIPAL) -->
+<section class="hero-slideshow">
+
+  <!-- TEXTO CENTRAL -->
+  <div class="hero-text">
+    <h1>Estudio <span class="tratto">Tratto</span></h1>
+    <p>Arquitectura y construcción</p>
+  </div>
+
+  <!-- SLIDES -->
+  <div class="hero-slides">
+    <img src="images/casa-ga/portada.jpg" class="active">
+    <img src="images/casa-juan/portada.jpg">
+    <img src="images/casa-iloca/portada.jpg">
+    <img src="images/casa-lucarnas/portada.jpg">
+    <img src="images/remodelacion-oficina/portada.jpg">
+  </div>
+
+</section>
+
+<!--SECCIÓN IMAGEN+TEXTO-->
+
+<section class="split-section">
+
+  <!-- BLOQUE 1 (imagen izquierda / texto derecha) -->
+  <div class="split-row">
+    <div class="split-image">
+      <img src="images/CROQUIS_01.jpg" alt="Proyecto 1">
+    </div>
+
+    <div class="split-text">
+      <h3>Lorem Ipsum</h3>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+      <button class="btn-split-section">Contáctanos →</button>
+      
+    </div>
+  </div>
+
+  <!-- BLOQUE 2 (ESPEJADO EN DESKTOP) -->
+  <div class="split-row reverse">
+    <div class="split-image">
+      <img src="images/PLANTA_01.jpg" alt="Proyecto 2">
+    </div>
+
+    <div class="split-text">
+      <h3>Lorem Ipsum</h3>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+      <button class="btn-split-section">Contáctanos →</button>
+    </div>
+  </div>
+
+</section>
+
+  
+
+  <!-- SERVICIOS -->
+
+<section id ="servicios" class="services-accordion">
+
+  <div class="service-item active">
+    <button class="service-title">ARQUITECTURA</button>
+    <div class="service-content">
+      <ul>
+        <li>Diseño arquitectónico</li>
+        <li>Anteproyecto y proyecto</li>
+        <li>Permisos municipales</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="service-item">
+    <button class="service-title">CONSTRUCCIÓN</button>
+    <div class="service-content">
+      <ul>
+        <li>Ejecución de obra</li>
+        <li>Gestión técnica</li>
+        <li>Control de calidad</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="service-item">
+    <button class="service-title">REMODELACIONES</button>
+    <div class="service-content">
+      <ul>
+        <li>Viviendas</li>
+        <li>Oficinas</li>
+        <li>Locales comerciales</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="service-item">
+    <button class="service-title">REGULARIZACIONES</button>
+    <div class="service-content">
+      <ul>
+        <li>Ley del mono</li>
+        <li>Recepción final</li>
+        <li>Actualización de planos</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="service-item">
+    <button class="service-title">ASESORÍAS TÉCNICAS</button>
+    <div class="service-content">
+      <ul>
+        <li>Inspección de obra</li>
+        <li>Evaluación técnica</li>
+        <li>Informes profesionales</li>
+      </ul>
+    </div>
+  </div>
+
+</section>
+
+
+
+  <!-- PROYECTOS -->
+
+<section id="proyectos" class="section">
+    <div class="container">
+      <h2>Proyectos destacados</h2>
+
+      <div class="projects-grid">
+
+  <a href="proyectos/casa-ga.html" class="project">
+    <img src="images/casa-ga/portada.jpg" alt="Casa GA">
+    <div class="project-overlay">
+      <span>Casa GA</span>
+    </div>
+  </a>
+
+  <a href="proyectos/casa-juan.html" class="project">
+    <img src="images/casa-juan/portada.jpg" alt="Casa Juan">
+    <div class="project-overlay">
+      <span>Casa Juan</span>
+    </div>
+  </a>
+
+  <a href="proyectos/casa-iloca.html" class="project">
+    <img src="images/casa-iloca/portada.jpg" alt="Casa Iloca">
+    <div class="project-overlay">
+      <span>Casa Iloca</span>
+    </div>
+  </a>
+
+<a href="proyectos/casa-lucarnas.html" class="project">
+  <img src="images/casa-lucarnas/portada.jpg" alt="Casa Lucarnas">
+  <div class="project-overlay">
+    <span>Casa Lucarnas</span>
+  </div>
+</a>
+
+<a href="proyectos/remodelacion-oficina.html" class="project">
+  <img src="images/remodelacion-oficina/portada.jpg" alt="Remodelacion Oficina">
+  <div class="project-overlay">
+    <span>Remodelación Oficina</span>
+  </div>
+</a>
+
+<a href="proyectos/remodelacion-oficina.html" class="project">
+  <img src="images/remodelacion-oficina/portada.jpg" alt="Remodelacion Oficina">
+  <div class="project-overlay">
+    <span>Remodelación Oficina</span>
+  </div>
+</a>
+
+</div>
+<div class="projects-cta">
+  <a href="proyectos.html" class="btn-outline">
+    Ver más →
+  </a>
+</div>
+</section>
+
+  <!-- EQUIPO -->
+
+
+<section id="equipo" class="equipo">
+  <div class="equipo__contenido">
+    <p class="equipo__descripcion">
+      Estudio Tratto es una oficina de arquitectura y construcción orientada al
+      desarrollo de proyectos contemporáneos, donde diseño y ejecución se
+      integran en un proceso claro, cercano y riguroso.
+    </p>
+
+    <div class="equipo__persona">
+      <img src="images/socio-1.jpg" alt="Nicolás Morales">
+      <h2>Nicolas Morales</h2>
+      <span>Arquitecto</span>
+    </div>
+  </div>
+</section>
+
+<section id="equipo" class="equipo">
+  <div class="equipo__contenido reverse">
+    <p class="equipo__descripcion">
+      Estudio Tratto es una oficina de arquitectura y construcción orientada al
+      desarrollo de proyectos contemporáneos, donde diseño y ejecución se
+      integran en un proceso claro, cercano y riguroso.
+    </p>
+
+    <div class="equipo__persona">
+      <img src="images/socio-1.jpg" alt="Nicolás Morales">
+      <h2>Nicolas Morales</h2>
+      <span>Arquitecto</span>
+    </div>
+  </div>
+</section>
+
+
+  <!-- BENEFICIOS -->
+
+<section class="beneficios-accordion">
+
+  <div class="beneficios-item active">
+    <div class="beneficios-icono">🐖</div>
+    <button class="beneficios-title">BENEFICIO 1</button>
+    <div class="beneficios-content">
+      <ul>
+        <li>Beneficio 1 Lorem</li>
+        <li>Beneficio 2 Lorem</li>
+        <li>Beneficio 3 Lorem</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="beneficios-item">
+    <div class="beneficios-icono">🐎</div>
+    <button class="beneficios-title">BENEFICIO 2</button>
+    <div class="beneficios-content">
+      <ul>
+      <li>Beneficio 1 Lorem</li>
+        <li>Beneficio 2 Lorem</li>
+        <li>Beneficio 3 Lorem</li>
+      </ul>
+    </div>
+  </div>
+
+ <div class="beneficios-item">
+    <div class="beneficios-icono">🐎</div>
+    <button class="beneficios-title">BENEFICIO 2</button>
+    <div class="beneficios-content">
+      <ul>
+      <li>Beneficio 1 Lorem</li>
+        <li>Beneficio 2 Lorem</li>
+        <li>Beneficio 3 Lorem</li>
+      </ul>
+    </div>
+  </div>
+
+ <div class="beneficios-item">
+    <div class="beneficios-icono">🐎</div>
+    <button class="beneficios-title">BENEFICIO 2</button>
+    <div class="beneficios-content">
+      <ul>
+      <li>Beneficio 1 Lorem</li>
+        <li>Beneficio 2 Lorem</li>
+        <li>Beneficio 3 Lorem</li>
+      </ul>
+    </div>
+  </div>
+
+ <div class="beneficios-item">
+    <div class="beneficios-icono">🐎</div>
+    <button class="beneficios-title">BENEFICIO 2</button>
+    <div class="beneficios-content">
+      <ul>
+      <li>Beneficio 1 Lorem</li>
+        <li>Beneficio 2 Lorem</li>
+        <li>Beneficio 3 Lorem</li>
+      </ul>
+    </div>
+  </div>
+  </section>
+
+    <div class="galeria">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+   </div>
+
+<!-- CONTACTO -->
+<section id="contacto" class="contact-section">
+
+  <!-- TEXTO VISIBLE SIEMPRE -->
+  <div class="contact-intro">
+    <h2>Escríbenos para cotizar tu proyecto</h2>
+  </div>
+
+ <!-- FORMULARIO OCULTO -->
+<div class="contact-form-wrapper" id="contactForm">
+
+  <form
+    class="contact-form"
+    action="mailto:contacto@estudiotratto.cl"
+    method="POST"
+    enctype="text/plain"
+  >
+
+    <div class="form-row">
+      <h4>Tipo de proyecto*</h4>
+      <select name="tipo_proyecto" required>
+        <option>Proyecto desde cero</option>
+        <option>Remodelación</option>
+        <option>Regularización</option>
+        <option>Asesoría técnica</option>
+      </select>
+    </div>
+
+    <div class="form-grid">
+      <input
+        type="text"
+        name="nombre"
+        placeholder="Nombre*"
+        required
+      >
+
+      <input
+        type="email"
+        name="correo"
+        placeholder="Correo*"
+        required
+      >
+
+      <input
+        type="tel"
+        name="movil"
+        placeholder="Móvil*"
+        required
+      >
+    </div>
+
+  
+
+   <div class="form-row">
+      <h4>Región*</h4>
+      <select name="region" required>
+        <option>Arica y Parinacota</option>
+        <option>Tarapacá</option>
+        <option>Antofagasta</option>
+        <option>Atacama</option>
+         <option>Coquimbo</option>
+        <option>Valparaíso</option>
+        <option>Metropolitana</option>
+        <option>Libertador General Bernardo O'Higgins</option>
+          <option>Maule</option>
+         <option>Ñuble</option>
+        <option>Biobío</option>
+        <option>Los Ríos</option>
+        <option>Los Lagos</option>
+        <option>Aysén del General Carlos Ibañez del Campo</option>
+        <option>Magallanes y Antártica Chilena</option>
+      </select>
+    </div>
+
+    <div class="form-row">
+      <input
+        type="text"
+        name="comuna"
+        placeholder="Comuna*"
+        required
+      >
+    </div>
+
+    <div class="form-row">
+      <textarea
+        name="mensaje"
+        placeholder="Cuéntanos sobre tu proyecto"
+      ></textarea>
+    </div>
+
+    <button type="submit">Enviar →</button>
+
+  </form>
+
+</div>
+
+
+
+
+  <footer class="footer">
+    <div class="footer-content">
+        <div class="footer-left">
+            <img src="images/logo-tratto-footer.svg" class="logofooter">
+            <div class="footer-social">
+                <a href="#"><img src="images/rrss-07.svg" alt="Facebook"></a>
+                <a href="#"><img src="images/rrss-08.svg" alt="Instagram"></a>
+                <a href="#"><img src="images/rrss-09.svg" alt="Y0utube"></a>
+            </div>
+        </div>
+        <div class="footer-right">
+            <ul class="footer-links">
+                <li><span>01.</span> <a href="#equipo">NOSOTROS</a></li>
+                <li><span>02.</span> <a href="#servicios">SERVICIOS</a></li>
+                <li><span>03.</span> <a href="#proyectos">PROYECTOS</a></li>
+                <li><span>04.</span> <a href="#contacto">CONTACTO</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-credits">
+        <p>© 2026. Nicolas Morales - Estudio Tratto.</p>
+    </div>
+</footer>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

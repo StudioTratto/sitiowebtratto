@@ -1,0 +1,1601 @@
+body.skip-intro .intro-screen {
+  display: none !important;
+}
+
+i/* =====================================================
+   VARIABLES GLOBALES 
+   Colores base del sitio
+===================================================== */
+
+:root {
+  --verde: #2f4a0b;
+  --gris: #777;
+  --negro: #111;
+}
+
+/* =====================================================
+   RESET / NORMALIZACIÓN
+   Limpia márgenes y controla box model
+===================================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* =====================================================
+   HEADER SOBRE INTRO (SIN SCROLL)
+   Texto blanco sobre imágenes
+===================================================== */
+
+body.intro-active nav a {
+  color: #fff;
+}
+
+/* =====================================================
+  02- COMINEZO PANTALLA CON SCROLL
+===================================================== */
+/* =====================================================
+   BODY / TIPOGRAFÍA BASE
+===================================================== */
+
+body {
+  font-family: 'IBM Plex Sans', sans-serif;
+  letter-spacing: 0.2px;
+}
+
+/* =====================================================
+   HEADER — ESTADO INTRO (TRANSPARENTE)
+===================================================== */
+
+.intro-active .header {
+  background: transparent;
+  border-bottom: none;
+}
+
+.intro-active .header-inner {
+  padding-top: 30px;
+}
+
+/* =====================================================
+   HEADER FIJO /  LOGO CON LA NAVEGACIÓN
+===================================================== */
+
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: transparent;
+  border-bottom: none;
+  z-index: 10;
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+}
+
+body.scrolled .header {
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+nav a.active {
+  opacity: 0.5;
+}
+
+.intro-active .header {
+  background: transparent !important;
+  box-shadow: none;
+}
+
+
+
+
+nav a {                          /* TEXTOS MENU */
+  margin-left: 25px;
+  font-size: 14px;
+  text-decoration: none;
+  text-transform: uppercase;     /* MAYÚSCULAS */
+  font-weight: 400;              /* 400 = regular | 500 o 600 = bold */
+  color: #111;
+  transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+.intro-active nav a {
+  color: #fff;
+}
+               
+nav a:hover {  /* EFECTO DE OPACIDAD AL PONER EL MOUSE SOBRE LOS TEXTOS DEL MENU */
+  opacity: 0.7;
+}
+
+/* Header transparente */
+.header nav a {
+  color: #fff;
+}
+
+/* Header con scroll */
+body.scrolled .header nav a {
+  color: #111;
+}
+
+
+/* =====================================
+   HEADER FIJO – PROYECTOS
+===================================== */
+
+body.page-proyectos .header {
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 2px 10px rgba(0,0,0,0);
+}
+
+/* Texto del menú siempre negro */
+body.page-proyectos .header nav a {
+  color: #111;
+}
+
+/* Forzamos logo negro visible */
+body.page-proyectos .logo-white {
+  display: none !important;
+}
+
+body.page-proyectos .logo-black {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+
+/* =====================================================
+   PÁGINA DE PROYECTO (DETALLE)
+===================================================== */
+.landing-proyectos {
+
+  max-width: 1200px;
+  margin: 140px 130px 100px 130px;
+  padding: 0 40px;
+
+}
+
+
+.project-header h1 {
+  font-size: 32px;
+  font-weight: 400;
+  margin-bottom: 6px; 
+}
+
+/* Ficha técnica */
+.project-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+
+  margin-top: 40px;  /* 🔴 aquí va el aire */
+  margin-bottom: 40px;
+}
+
+.info-block strong {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #777;
+}
+
+.info-block span {
+  font-size: 14px;
+}
+
+/* Memoria */
+.project-text {
+  max-width: 700px;
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+
+/* Galería */
+.project-gallery img {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+
+
+
+/* =====================================================
+   TRATTO / IDENTIDAD TIPOGRÁFICA
+   Uso específico para la palabra TRATTO EN PORTADA
+===================================================== */
+
+.tratto {
+  font-family: 'IBM Plex Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+/* =====================================================
+   TÍTULOS GENERALES
+===================================================== */
+
+h1, h2 {
+  letter-spacing: 1px;
+}
+
+h2 {
+  font-size: 22px;
+  font-weight: 400;
+  margin-bottom: 40px;
+  text-align:center;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+/* =====================================================
+   CONTENEDORES Y SECCIONES (MARGENES PAGINA)
+===================================================== */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 0px;
+}
+
+.section {
+  padding: 0px 80px 8%;
+}
+@media (max-width: 768px) {
+.section {
+  padding: 0px 20px 8%;
+}
+
+}
+
+/* =====================================================
+   OFFSET PARA ANCLAS (HEADER FIJO)
+   Evita que el menú tape el contenido al hacer click
+===================================================== */
+
+section {
+  scroll-margin-top: 200px;
+}
+
+/* =====================================================
+   BLOQUES DE TEXTO
+===================================================== */
+
+.narrow {
+  max-width: 700px;
+  margin: auto;
+}
+
+.intro {
+  font-size: 20px;
+  line-height: 1.8;
+}
+
+/* =====================================
+   SERVICES – ACORDEÓN
+===================================== */
+
+.services-accordion {
+  max-width: 1300px;
+  margin: 100px 100px 50px 100px;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  column-gap: 40px;
+}
+
+/* ITEM */
+.service-item {
+  position: relative;
+}
+
+/* TÍTULO */
+.service-title {
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #ddd;
+  color: #111;
+}
+
+/* CONTENIDO */
+.service-content {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+}
+
+.service-content ul {
+  margin-top: 24px;
+  padding-left: 0;
+  list-style: none;
+}
+
+.service-content li {
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #555;
+  margin-bottom: 14px;
+}
+
+/* ACTIVO */
+.service-item.active .service-content {
+  max-height: 300px;
+  opacity: 1;
+}
+
+/* =====================================
+   RESPONSIVE
+===================================== */
+
+@media (max-width: 900px) {
+  .services-accordion {
+    grid-template-columns: 1fr;
+    row-gap: 24px;
+      margin: 50px 10px 100px 10px;
+  }
+
+  .service-title {
+    font-size: 13px;
+  }
+
+  .service-content ul {
+    margin-top: 16px;
+  }
+}
+
+
+
+/* =====================================================
+   PROYECTOS – OVERLAY CENTRADO (RESPONSIVE)
+===================================================== */
+
+
+.project {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+/* Oscurecimiento suave al hover */
+.project::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+/* Activar overlay */
+.project:hover::after {
+  opacity: 1;
+}
+
+
+.project img {
+  width: 100%;
+  display: block;
+  z-index: 0;
+}
+
+/* Overlay ocupa toda la imagen */
+.project-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  pointer-events: none;
+}
+
+/* Texto del proyecto */
+.project-overlay span {
+  max-width: 80%;
+  line-height: 1.3;
+color: white;
+font-size: 14px;
+  text-align: center;
+   letter-spacing: 0.2em;
+  text-transform: uppercase;
+  white-space: normal; /* permite 2 líneas */
+}
+
+/* =====================================================
+   PROYECTOS – ANIMACIÓN TEXTO (FADE + SLIDE)
+===================================================== */
+
+.project-overlay span {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+
+/* Al pasar el mouse */
+.project:hover .project-overlay span {
+  opacity: 1;
+  transform: translateY(6px);
+}
+
+/* =====================================================
+   PROYECTOS – GRID 3 COLUMNAS
+===================================================== */
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 520px) {
+  .projects-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+
+/* =====================================================
+   PROYECTOS – LANDING
+===================================================== */
+
+
+.project-landing {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+/* Oscurecimiento suave al hover */
+.project-landing::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+/* Activar overlay */
+.project-landing:hover::after {
+  opacity: 1;
+}
+
+
+.project-landing img {
+  width: 100%;
+  display: block;
+  z-index: 0;
+}
+
+/* Overlay ocupa toda la imagen */
+.project-overlay-landing {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  pointer-events: none;
+}
+
+/* Texto del proyecto */
+.project-overlay-landing span {
+  max-width: 80%;
+  line-height: 1.3;
+color: white;
+font-size: 14px;
+  text-align: center;
+   letter-spacing: 0.2em;
+  text-transform: uppercase;
+  white-space: normal; /* permite 2 líneas */
+}
+
+/* =====================================================
+   PROYECTOS – ANIMACIÓN TEXTO (FADE + SLIDE)
+===================================================== */
+
+.project-overlay-landing span {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+
+/* Al pasar el mouse */
+.project-landing:hover .project-overlay-landing span {
+  opacity: 1;
+  transform: translateY(6px);
+}
+
+/* =====================================================
+   PROYECTOS – GRID 3 COLUMNAS
+===================================================== */
+
+.projects-grid-landing {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+    padding-top:100px;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .projects-grid-landing {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 520px) {
+  .projects-grid-landing {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+
+
+
+/* =====================================
+   BENEFICIOS – ACORDEÓN
+===================================== */
+
+.beneficios-accordion {
+  max-width: 1600px;
+  margin: 100px 100px 50px 100px;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  column-gap: 40px;
+}
+
+/* ITEM */
+.beneficios-item {
+  position: relative;
+}
+
+/* ICONO */
+.beneficios-icono {
+  font-size:40px;
+}
+
+/* TÍTULO */
+.beneficios-title {
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #ddd;
+  color: #111;
+}
+
+/* CONTENIDO */
+.beneficios-content {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+}
+
+.beneficios-content ul {
+  margin-top: 24px;
+  padding-left: 0;
+  list-style: none;
+}
+
+.beneficios-content li {
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #555;
+  margin-bottom: 14px;
+}
+
+/* ACTIVO */
+.beneficios-item.active .beneficios-content {
+  max-height: 300px;
+  opacity: 1;
+}
+
+/* =====================================
+   RESPONSIVE
+===================================== */
+
+@media (max-width: 900px) {
+  .beneficios-accordion {
+    grid-template-columns: 1fr;
+    row-gap: 24px;
+          margin: 50px 10px 100px 10px;
+  }
+
+  .beneficios-title {
+    font-size: 13px;
+  }
+
+  .beneficios-content ul {
+    margin-top: 16px;
+  }
+}
+
+/* =====================================
+   GALERIA INTERACTIVA
+===================================== */
+
+.galeria {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 600px;
+    padding-bottom: 100px;
+}
+
+@media (max-width: 900px) {
+.galeria{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 900px;
+    padding-bottom: 100px;
+}
+}
+.item {
+    flex: 1;
+    height: 100%
+}
+
+.item:nth-child(1) {
+    background-image: url("images/proyecto-01.jpg")
+}
+
+.item:nth-child(2) {
+    background-image: url("images/proyecto-02.jpg")
+}
+
+.item:nth-child(3) {
+    background-image: url("images/proyecto-03.jpg")
+}
+
+.item:nth-child(4) {
+    background-image: url("images/proyecto-01.jpg")
+}
+
+.item:nth-child(5) {
+    background-image: url("images/proyecto-02.jpg")
+}
+
+.item {
+    background-position: center;
+    background-size: cover;
+    transition: flex 0.8s ease;
+}
+
+.item:hover {
+    flex: 5;
+}
+
+/* =====================================================
+   CONTACTO
+===================================================== */ 
+
+.contact-text {
+  margin-bottom: 30px;
+}
+
+.contact-info {
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.contacto {
+  min-height: 80vh;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 80px;
+}
+
+.contacto-inner {
+  text-align: center;
+  width: 100%;
+}
+
+/* =====================================================
+   CONTACTO – FORMULARIO DESPLEGABLE
+===================================================== */
+
+.contact-section {
+  padding: 40px 0px 0px;
+}
+.contact-section-landing {
+  padding: 160px 0px 0px;
+}
+
+
+.contact-intro {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  cursor: pointer;
+}
+
+.contact-intro h2 {
+  margin-bottom: 10px;
+}
+
+
+@media (max-width: 768px) {.contact-section{padding: 10px 0px}
+
+
+}
+
+
+
+
+/* FORMULARIO */
+.contact-form {
+  max-width: 1200px;
+  margin: 60px auto 0;
+  padding: 0 40px 100px;
+}
+.form-row h4 {
+  font-size: 16px;
+  padding-bottom: 14px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight:300;
+}
+
+.form-row {
+  margin-bottom: 24px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 24px;
+  
+}
+
+@media (max-width: 768px) {
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 24px;
+  margin-bottom: 24px;
+  
+}
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  width: 100%;
+  padding: 14px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-top: 0px white;
+    border-right: 0px white;
+    border-left: 0px white;
+
+ font-family: 'IBM Plex Mono', monospace;
+  font-weight:300;
+  color: black;
+}
+
+.contact-form textarea {
+  min-height: 120px;
+  resize: vertical;
+  padding-left:16px;
+  color:black;
+}
+
+
+
+.contact-form button {
+  display: inline-flex;
+  padding: .75rem 1.25rem;
+  border-radius: 10rem;
+  color: #111;
+  background-color: transparent;
+  border: 1px solid #111;
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: .1rem;
+  font-family: 'IBM Plex Sans', sans-serif;
+  
+  text-decoration: none;
+  transition: all .3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* fondo animado */
+.contact-form button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 0%;
+  background: #111;
+  transition: all .3s ease;
+  z-index: -1;
+}
+
+/* hover */
+.contact-form button:hover {
+  color: #fff;
+}
+
+.contact-form button:hover::before {
+  width: 100%;
+}
+
+/* AJUSTES VISUALES CONTACTO */
+
+.contact-intro {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+
+.contact-click {
+  font-size: 12px;
+  letter-spacing: 0.25em;
+  opacity: 0.5;
+  text-transform: uppercase;
+}
+
+
+
+/* =====================================================
+   NOSOTROS – GRID ALINEADO A PROYECTOS
+===================================================== */
+
+.about-section {
+  padding: 120px 0;
+}
+
+.about-grid {
+  max-width: 1200px;   /* ← AJUSTA este valor al mismo que proyectos */
+  margin: 0 auto;
+  padding: 0 40px;
+
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  column-gap: 80px;
+  align-items: center;
+}
+
+/* TEXTO */
+.about-text {
+  max-width: 600px;
+}
+
+.about-text p {
+  font-size: 15px;
+  line-height: 1.9;
+  color: #333;
+}
+
+
+
+@media (max-width: 700px) {
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    row-gap: 60px;
+  }
+
+  .about-text {
+    max-width: 100%;
+  }
+
+  .about-partners {
+    justify-content: column;
+    align-items: center;
+    gap: 40px;
+  }
+}
+
+
+
+
+/* ============================
+  FOOTER
+============================ */
+
+
+.footer {
+    background-color: #346240;
+    color: #fff;
+    padding: 40px 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 140px;
+    margin: 0 auto;
+}
+
+.footer-left {
+    flex: 1;
+    text-align: left;
+}
+
+.logofooter {
+    width: 200px;
+    padding-bottom:40px;
+}
+
+
+
+.footer-social a {
+    margin-right: 15px;
+}
+
+.footer-social img {
+    width: 40px;
+}
+
+.footer-right {
+
+    text-align: right;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+
+}
+
+.footer-links li {
+    font-size: 50px;
+}
+
+.footer-links li span {
+    margin-right: 10px;
+    font-size: 20px;
+      font-family: 'IBM Plex Mono', monospace;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #fff;
+      font-family: 'IBM Plex Mono', monospace;
+font-size:30px;
+
+}
+
+.footer-credits {
+    text-align: center;
+    padding: 20px 0;
+    font-size: 14px;
+    border-top: 1px solid #555;
+}
+
+/* =====================================
+   FOOTER – MOBILE
+===================================== */
+
+@media (max-width: 768px) {
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 60px;
+     padding: 0 40px;
+}
+
+
+.footer-right {
+    flex: 1;
+    text-align: left;
+}
+}
+/* =====================================
+   HEADER – FIX DEFINITIVO
+===================================== */
+
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px 40px;
+  box-sizing: border-box;
+  position:relative;
+}
+
+/* LOGO */
+.logo {
+  display: block;
+  width: 120px;       /* tamaño base */
+  height: auto;
+  flex-shrink: 0;     /* 🔑 nunca desaparece */
+}
+
+/* estado inicial: header transparente */
+.header .logo-white {
+  opacity: 1;
+}
+
+.header .logo-black {
+  opacity: 0;
+}
+
+/* estado con scroll */
+body.scrolled .header .logo-white {
+  opacity: 0;
+  visibility:hidden;
+  display:none;
+}
+
+body.scrolled .header .logo-black {
+  opacity: 1;
+}
+
+
+/* NAV */
+.header nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  font-family:'IBM Plex Mono', monospace;
+  letter-spacing:1px;
+}
+
+
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+  .logo {
+    width: 140px;
+  }
+}
+
+@media (max-width: 768px) {
+  .logo {
+    width: 110px;
+  }
+}
+
+/* =====================================================
+   PROYECTOS – OVERLAY CENTRADO (RESPONSIVE)
+===================================================== */
+
+.project {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+.project img {
+  width: 100%;
+  display: block;
+}
+
+/* Overlay ocupa toda la imagen */
+.project-overlay {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  pointer-events: none;
+}
+
+/* Texto del proyecto */
+.project-overlay span {
+  max-width: 80%;
+  line-height: 1.3;
+
+  text-align: center;
+  white-space: normal; /* permite 2 líneas */
+}
+
+/* =====================================================
+   PROYECTOS – ANIMACIÓN TEXTO (FADE + SLIDE)
+===================================================== */
+
+.project-overlay span {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+
+/* Al pasar el mouse */
+.project:hover .project-overlay span {
+  opacity: 1;
+  transform: translateY(6px);
+}
+
+/* =====================================================
+   BOTÓN OUTLINE – REUTILIZABLE
+===================================================== */
+
+.btn-outline {
+  display: inline-flex;
+  padding: .75rem 1.25rem;
+  border-radius: 10rem;
+  color: #111;
+  background-color: transparent;
+  border: 1px solid #111;
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: .1rem;
+  font-family: 'IBM Plex Sans', sans-serif;
+  
+  text-decoration: none;
+  transition: all .3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* fondo animado */
+.btn-outline::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 0%;
+  background: #111;
+  transition: all .3s ease;
+  z-index: -1;
+}
+/* CTA bajo proyectos */
+.projects-cta {
+  margin-top: 60px;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+
+/* hover */
+.btn-outline:hover {
+  color: #fff;
+}
+
+.btn-outline:hover::before {
+  width: 100%;
+}
+
+/* =====================================================
+   BOTÓN OUTLINE – SECCIÓN SPLIT
+===================================================== */
+.btn-split-section {
+  display: inline-flex;
+  padding: .75rem 1.25rem;
+  border-radius: 10rem;
+  color: #111;
+  background-color: transparent;
+  border: 1px solid #111;
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: .1rem;
+  font-family: 'IBM Plex Sans', sans-serif;
+  
+  text-decoration: none;
+  transition: all .3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  width: 30%;
+}
+
+/* fondo animado */
+.btn-split-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 0%;
+  background: #111;
+  transition: all .3s ease;
+  z-index: -1;
+}
+/* CTA bajo proyectos */
+.projects-cta {
+  margin-top: 60px;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+
+/* hover */
+.btn-split-section:hover {
+  color: #fff;
+}
+
+.btn-split-section:hover::before {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+.btn-split-section {
+  width: 45%;
+}
+}
+/* =====================================
+   HERO SLIDESHOW – BANNER PRINCIPAL
+===================================== */
+
+.hero-slideshow {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.hero-slides img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+
+.hero-slides img.active {
+  opacity: 1;
+}
+
+/* Overlay sutil */
+.hero-slideshow::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 1;
+}
+
+/* Texto central */
+.hero-slideshow .hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+}
+
+.hero-slideshow .hero-text h1 {
+  font-size: 56px;
+  font-weight: 400;
+}
+
+.hero-slideshow .hero-text p {
+  font-size: 18px;
+  margin-top: 10px;
+  letter-spacing: 0.08em;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-slideshow .hero-text h1 {
+    font-size: 36px;
+  }
+
+  .hero-slideshow .hero-text p {
+    font-size: 14px;
+  }
+}
+
+
+    /* ===============================
+   MENU HAMBURGUESA
+================================ */
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 26px;
+  height: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 20;
+}
+
+.menu-toggle span {
+  display: block;
+  height: 2px;
+  background:white;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+body.scrolled .menu-toggle span {
+  background: #111;
+}
+
+
+
+
+/* ===============================
+   NAV MOBILE
+================================ */
+
+@media (max-width: 768px) {
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .header nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background: black;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    transition: right 0.4s ease;
+  }
+
+  .header nav a {
+    font-size: 20px;
+    margin: 0;
+  }
+
+  .header nav.open {
+    right: 0;
+  }
+
+  /* Oculta instagram inline y lo muestra más grande */
+  .instagram-link img {
+    width: 22px;
+  }
+}
+
+/* ===============================
+   ANIMACIÓN HAMBURGUESA → X
+================================ */
+
+.menu-toggle.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+
+/* =====================================================
+   SPLIT SECTIONS (IMAGEN / TEXTO)
+===================================================== */
+
+.split-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.split-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 10vh;
+}
+
+/* Imagen */
+.split-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Texto */
+.split-text {
+  background: white;
+  color: black;
+  padding: 0px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.split-text h3 {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+.split-text p {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  max-width: 480px;
+}
+
+/* ESPEJADO SOLO EN DESKTOP */
+.split-row.reverse {
+  direction: rtl;
+}
+
+.split-row.reverse > * {
+  direction: ltr;
+}
+
+@media (max-width: 768px) {
+
+  .split-row {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .split-text {
+    padding: 40px 20px;
+  }
+
+  /* desactivamos el espejo en mobile */
+  .split-row.reverse {
+    direction: ltr;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+
+.equipo {
+  padding: 10px 80px 5%;
+}
+
+.equipo__contenido {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 80px;
+  align-items: center;
+}
+
+
+.equipo__descripcion {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #333;
+  max-width: 520px;
+}
+
+.equipo__persona {
+  text-align: center;
+}
+
+.equipo__persona img {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.equipo__persona h2 {
+
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.equipo__persona span {
+  font-size: 16px;
+  color: grey;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+
+
+/* ESPEJADO SOLO EN DESKTOP */
+.equipo__contenido.reverse {
+  direction: rtl;
+}
+
+.equipo__contenido.reverse > * {
+  direction: ltr;
+}
+
+
+
+
+
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .equipo__contenido {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .equipo__descripcion {
+    max-width: 100%;
+  }
+}
+
+
+
+/* LANDING PROYECTOS */
+
+
