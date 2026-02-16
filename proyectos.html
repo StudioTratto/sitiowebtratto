@@ -1,133 +1,132 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <title>Estudio Tratto — Arquitectura y Construcción</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
-<script>
-  // DECIDE SI MOSTRAR INTRO ANTES DEL RENDER
-
-</script>
+  <meta name="description"
+    content="Proyectos de arquitectura y construcción de Estudio Tratto. Viviendas, remodelaciones y más.">
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body class="page-proyectos">
 
 
-<!-- HEADER -->
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
 
-<header class="header">
-  <div class="header-inner">
+      <a href="#" class="logo-link js-go-home" aria-label="Ir al inicio">
+        <img src="images/logo-tratto-blanco.svg" alt="Estudio Tratto" class="logo logo-white">
+        <img src="images/logo-tratto-negro.svg" alt="Estudio Tratto" class="logo logo-black">
+      </a>
 
-    <img src="images/logo-tratto-blanco.svg" alt="Estudio Tratto" class="logo logo-white">
-<img src="images/logo-tratto-negro.svg" alt="Estudio Tratto" class="logo logo-black">
+      <!-- BOTÓN HAMBURGUESA -->
+      <button class="menu-toggle" aria-label="Abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
-    <!-- BOTÓN HAMBURGUESA -->
-    <button class="menu-toggle" aria-label="Abrir menú">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+      <!-- NAV -->
+      <nav class="nav">
+        <a href="/index.html#equipo">Nosotros</a>
+        <a href="/index.html#servicios">Servicios</a>
+        <a href="/proyectos.html">Proyectos</a>
+        <a href="/index.html#contacto">Contacto</a>
 
-    <!-- NAV -->
-    <nav class="nav">
-      <a href="#equipo index.html" class="enter-site">Nosotros</a>
-      <a href="#servicios" class="enter-site">Servicios</a>
-      <a href="proyectos.html" class="enter-site">Proyectos</a>
-      <a href="#contacto" class="enter-site">Contacto</a>
+      </nav>
 
+    </div>
+  </header>
 
-
-  </div>
-</header>
-
-  <!-- PROYECTOS -->
-
-<section id="proyectos-landing" class="section">
+  <section id="proyectos-landing" class="section">
     <div class="container">
+
+      <!-- FILTRO POR TIPO DE PROYECTO -->
+      <div class="projects-filters">
+        <button class="filter-btn active" data-filter="all">TODOS</button>
+        <button class="filter-btn" data-filter="vivienda">VIVIENDA</button>
+        <button class="filter-btn" data-filter="remodelacion">REMODELACION</button>
+        <button class="filter-btn" data-filter="otros">OTROS</button>
+      </div>
+
+      <!-- PROYECTOS -->
 
       <div class="projects-grid-landing">
 
-  <a href="proyectos/casa-ga.html" class="project-landing">
-    <img src="images/casa-ga/portada.jpg" alt="Casa GA">
-    <div class="project-overlay-landing">
-      <span>Casa GA</span>
-    </div>
-  </a>
-   <a href="proyectos/casa-ga.html" class="project-landing">
-    <img src="images/casa-ga/portada.jpg" alt="Casa GA">
-    <div class="project-overlay-landing">
-      <span>Casa GA</span>
-    </div>
-  </a>
+        <a href="proyectos/casa-ga.html" class="project-landing" data-category="vivienda">
+          <img src="images/casa-ga/01.jpg" alt="Casa GA">
+          <div class="project-overlay-landing">
+            <span>Casa GA</span>
+          </div>
+        </a>
 
-   <a href="proyectos/casa-ga.html" class="project-landing">
-    <img src="images/casa-ga/portada.jpg" alt="Casa GA">
-    <div class="project-overlay-landing">
-      <span>Casa GA</span>
-    </div>
-  </a>
+        <a href="proyectos/casa-iloca.html" class="project-landing" data-category="vivienda">
+          <img src="images/casa-iloca/02.jpg" alt="Casa Iloca">
+          <div class="project-overlay-landing">
+            <span>Casa Iloca</span>
+          </div>
+        </a>
 
-   <a href="proyectos/casa-ga.html" class="project-landing">
-    <img src="images/casa-ga/portada.jpg" alt="Casa GA">
-    <div class="project-overlay-landing">
-      <span>Casa GA</span>
-    </div>
-  </a>
+        <a href="proyectos/casa-juan.html" class="project-landing" data-category="vivienda">
+          <img src="images/casa-juan/01.jpg" alt="Casa GA">
+          <div class="project-overlay-landing">
+            <span>Casa Juan</span>
+          </div>
+        </a>
 
-   <a href="proyectos/casa-ga.html" class="project-landing">
-    <img src="images/casa-ga/portada.jpg" alt="Casa GA">
-    <div class="project-overlay-landing">
-      <span>Casa GA</span>
-    </div>
-  </a>
+        <a href="proyectos/casa-lucarnas.html" class="project-landing" data-category="vivienda">
+          <img src="images/casa-lucarnas/01.jpg" alt="Casa GA">
+          <div class="project-overlay-landing">
+            <span>Casa Lucarnas</span>
+          </div>
+        </a>
 
-   <a href="proyectos/casa-ga.html" class="project-landing">
-    <img src="images/casa-ga/portada.jpg" alt="Casa GA">
-    <div class="project-overlay-landing">
-      <span>Casa GA</span>
-    </div>
-  </a>
+        <a href="proyectos/remodelacion-oficina.html" class="project-landing" data-category="remodelacion">
+          <img src="images/remodelacion-oficina/04.jpg" alt="Casa GA">
+          <div class="project-overlay-landing">
+            <span>Remodelacion oficina</span>
+          </div>
+        </a>
+
+      </div>
 
 
 
+  </section>
 
-
-
-</section>
-
- 
+  </main>
 
 
   <footer class="footer">
     <div class="footer-content">
-        <div class="footer-left">
-            <img src="images/logo-tratto-footer.svg" class="logofooter">
-            <div class="footer-social">
-                <a href="#"><img src="images/rrss-07.svg" alt="Facebook"></a>
-                <a href="#"><img src="images/rrss-08.svg" alt="Instagram"></a>
-                <a href="#"><img src="images/rrss-09.svg" alt="Y0utube"></a>
-            </div>
+      <div class="footer-left">
+        <img src="images/logo-tratto-footer.svg" class="logofooter">
+        <div class="footer-social">
+          <a href="https://www.instagram.com/nicolas.moralesu/" target="_blank"><img src="images/rrss-08.svg"
+              alt="Instagram"></a>
         </div>
-        <div class="footer-right">
-            <ul class="footer-links">
-                <li><span>01.</span> <a href="#equipo">NOSOTROS</a></li>
-                <li><span>02.</span> <a href="#servicios">SERVICIOS</a></li>
-                <li><span>03.</span> <a href="#proyectos">PROYECTOS</a></li>
-                <li><span>04.</span> <a href="#contacto">CONTACTO</a></li>
-            </ul>
-        </div>
+      </div>
+      <div class="footer-right">
+        <ul class="footer-links">
+          <li><a href="../index.html#equipo">NOSOTROS</a></li>
+          <li><a href="../index.html#servicios">SERVICIOS</a></li>
+          <li><a href="../#proyectos">PROYECTOS</a></li>
+          <li><a href="../index.html#contacto">CONTACTO</a></li>
+        </ul>
+      </div>
     </div>
     <div class="footer-credits">
-        <p>© 2026. Nicolas Morales - Estudio Tratto.</p>
+      <p>© 2026. Nicolas Morales - Studio Tratto.</p>
     </div>
-</footer>
+  </footer>
 
-</main>
-
-<script src="script.js"></script>
+  <!-- JS global -->
+  <script src="script.js"></script>
 </body>
+
 </html>

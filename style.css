@@ -2,7 +2,7 @@ body.skip-intro .intro-screen {
   display: none !important;
 }
 
-i/* =====================================================
+/* =====================================================
    VARIABLES GLOBALES 
    Colores base del sitio
 ===================================================== */
@@ -11,6 +11,8 @@ i/* =====================================================
   --verde: #2f4a0b;
   --gris: #777;
   --negro: #111;
+  /* Galería editorial */
+  --gallery-gap: 10px;
 }
 
 /* =====================================================
@@ -42,7 +44,7 @@ body.intro-active nav a {
 ===================================================== */
 
 body {
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: 'Inter', Arial, sans-serif;
   letter-spacing: 0.2px;
 }
 
@@ -55,8 +57,9 @@ body {
   border-bottom: none;
 }
 
-.intro-active .header-inner {
-  padding-top: 30px;
+/* Ajuste visual logo SOLO en el hero */
+.intro-active .logo {
+  transform: translateY(4px);
 }
 
 /* =====================================================
@@ -69,26 +72,44 @@ body {
   width: 100%;
   background: transparent;
   border-bottom: none;
-  z-index: 10;
+  z-index: 100;
   transition: background 0.4s ease, box-shadow 0.4s ease;
 }
 
 body.scrolled .header {
   background: rgba(255, 255, 255, 0.96);
-  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
 }
 
 .header-inner {
-  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
+  height: 120px;
+  /* 🔑 altura fija */
   padding: 20px 40px;
+  /* 🔑 solo horizontal */
   display: flex;
   justify-content: space-between;
   align-items: center;
+  /* 🔑 centro vertical real */
+  box-sizing: border-box;
+  position: relative;
 }
 
+.logo-link {
+  display: flex;
+  align-items: center;
+}
 
-
+/* LOGO */
+.logo {
+  display: block;
+  width: 120px;
+  /* tamaño base */
+  height: auto;
+  flex-shrink: 0;
+  /* 🔑 nunca desaparece */
+}
 
 .logo:hover {
   transform: scale(1.05);
@@ -103,15 +124,15 @@ nav a.active {
   box-shadow: none;
 }
 
-
-
-
-nav a {                          /* TEXTOS MENU */
+nav a {
+  /* TEXTOS MENU */
   margin-left: 25px;
   font-size: 14px;
   text-decoration: none;
-  text-transform: uppercase;     /* MAYÚSCULAS */
-  font-weight: 400;              /* 400 = regular | 500 o 600 = bold */
+  text-transform: uppercase;
+  /* MAYÚSCULAS */
+  font-weight: 400;
+  /* 400 = regular | 500 o 600 = bold */
   color: #111;
   transition: opacity 0.3s ease, color 0.3s ease;
 }
@@ -119,21 +140,21 @@ nav a {                          /* TEXTOS MENU */
 .intro-active nav a {
   color: #fff;
 }
-               
-nav a:hover {  /* EFECTO DE OPACIDAD AL PONER EL MOUSE SOBRE LOS TEXTOS DEL MENU */
+
+nav a:hover {
+  /* EFECTO DE OPACIDAD AL PONER EL MOUSE SOBRE LOS TEXTOS DEL MENU */
   opacity: 0.7;
 }
 
 /* Header transparente */
-.header nav a {
+.nav a {
   color: #fff;
 }
 
 /* Header con scroll */
-body.scrolled .header nav a {
+body.scrolled .nav a {
   color: #111;
 }
-
 
 /* =====================================
    HEADER FIJO – PROYECTOS
@@ -141,11 +162,11 @@ body.scrolled .header nav a {
 
 body.page-proyectos .header {
   background: rgba(255, 255, 255, 0.96);
-  box-shadow: 0 2px 10px rgba(0,0,0,0);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0);
 }
 
 /* Texto del menú siempre negro */
-body.page-proyectos .header nav a {
+body.page-proyectos .nav a {
   color: #111;
 }
 
@@ -160,23 +181,233 @@ body.page-proyectos .logo-black {
   visibility: visible !important;
 }
 
+/* ============================
+   LOGOS – ESTADO BASE
+============================ */
+
+.logo-white {
+  display: block;
+}
+
+.logo-black {
+  display: none;
+}
+
+/* ============================
+   LOGOS – SCROLL
+============================ */
+
+body.scrolled .logo-white {
+  display: none;
+}
+
+body.scrolled .logo-black {
+  display: block;
+}
+
+/* =====================================
+   MENÚ MÓVIL ABIERTO (CORRECTO GLOBAL)
+===================================== */
+
+@media (max-width: 768px) {
+
+  body.menu-open .nav {
+    background: #346240;
+  }
+
+  body.menu-open .nav a {
+    color: #fff !important;
+  }
+
+  /* logos correctos sobre fondo verde */
+  body.menu-open .logo-white {
+    display: block;
+  }
+
+  body.menu-open .logo-black {
+    display: none;
+  }
+
+  .nav {
+    z-index: 1000;
+  }
+}
+
+/* =====================================
+   LOGO SIEMPRE VISIBLE SOBRE MENÚ MÓVIL
+===================================== */
+
+@media (max-width: 768px) {
+
+  .logo-link {
+    position: relative;
+    z-index: 1002;
+  }
+
+  .menu-toggle {
+    position: relative;
+    z-index: 1003;
+  }
+
+}
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+  .logo {
+    width: 140px;
+  }
+}
+
+@media (max-width: 768px) {
+  .logo {
+    width: 110px;
+  }
+}
+
+/* =====================================
+   NAV MÓVIL – CENTRADO VERTICAL
+===================================== */
+
+@media (max-width: 768px) {
+
+  body.menu-open .nav {
+    position: fixed;
+    inset: 0;
+    /* top right bottom left = 0 */
+    display: flex;
+    flex-direction: column;
+    /* 🔑 uno debajo del otro */
+    justify-content: center;
+    /* 🔑 centro vertical */
+    align-items: center;
+    /* 🔑 centro horizontal */
+    gap: 32px;
+
+    background: #346240;
+    z-index: 1000;
+  }
+
+  body.menu-open .nav a {
+    font-size: 20px;
+    color: #fff !important;
+    margin: 0;
+  }
+}
+
+/* =====================================
+   HAMBURGUESA → X (MENÚ ABIERTO)
+===================================== */
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  width: 26px;
+  height: 2px;
+  background: #fff;
+  transition: transform 0.35s ease, opacity 0.25s ease;
+}
+
+/* estado X */
+body.menu-open .menu-toggle span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+body.menu-open .menu-toggle span:nth-child(2) {
+  opacity: 0;
+}
+
+body.menu-open .menu-toggle span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* visible solo en móvil */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+    position: relative;
+    z-index: 1003;
+    /* 🔑 sobre menú verde */
+  }
+}
+
+/* =====================================
+   BOTÓN X – POSICIÓN FINAL (MENÚ ABIERTO)
+===================================== */
+
+@media (max-width: 768px) {
+
+  body.menu-open .menu-toggle {
+    position: absolute;
+    top: 50%;
+    right: 40px;
+    transform: translateY(-50%);
+    z-index: 1004;
+  }
+
+  body.menu-open .menu-toggle span {
+    background: #fff;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .nav {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+
+    background: #346240;
+
+    opacity: 0;
+    transform: translateY(12px);
+    transition:
+      opacity 0.45s ease,
+      transform 0.45s ease;
+
+    pointer-events: none;
+    z-index: 1000;
+  }
+
+  body.menu-open .nav {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  body.menu-open .nav a {
+    font-size: 20px;
+    color: #fff !important;
+    margin: 0;
+  }
+}
 
 /* =====================================================
    PÁGINA DE PROYECTO (DETALLE)
 ===================================================== */
 .landing-proyectos {
-
   max-width: 1200px;
-  margin: 140px 130px 100px 130px;
+  margin: 140px auto 100px auto;
+  /* 🔑 CENTRADO REAL */
   padding: 0 40px;
-
 }
-
 
 .project-header h1 {
   font-size: 32px;
   font-weight: 400;
-  margin-bottom: 6px; 
+  margin-bottom: 6px;
 }
 
 /* Ficha técnica */
@@ -185,7 +416,8 @@ body.page-proyectos .logo-black {
   grid-template-columns: repeat(3, 1fr);
   gap: 40px;
 
-  margin-top: 40px;  /* 🔴 aquí va el aire */
+  margin-top: 40px;
+  /* 🔴 aquí va el aire */
   margin-bottom: 40px;
 }
 
@@ -213,25 +445,19 @@ body.page-proyectos .logo-black {
   margin-bottom: 20px;
 }
 
-
-
-
-/* =====================================================
-   TRATTO / IDENTIDAD TIPOGRÁFICA
-   Uso específico para la palabra TRATTO EN PORTADA
-===================================================== */
-
-.tratto {
-  font-family: 'IBM Plex Mono', monospace;
-  text-transform: uppercase;
-  letter-spacing: 3px;
+@media (max-width: 768px) {
+  .landing-proyectos {
+    margin: 120px auto 80px auto;
+    padding: 0 20px;
+  }
 }
 
 /* =====================================================
    TÍTULOS GENERALES
 ===================================================== */
 
-h1, h2 {
+h1,
+h2 {
   letter-spacing: 1px;
 }
 
@@ -239,8 +465,8 @@ h2 {
   font-size: 22px;
   font-weight: 400;
   margin-bottom: 40px;
-  text-align:center;
-  font-family: 'IBM Plex Mono', monospace;
+  text-align: center;
+  font-family: 'Inter', Arial, sans-serif;
 }
 
 /* =====================================================
@@ -256,10 +482,11 @@ h2 {
 .section {
   padding: 0px 80px 8%;
 }
+
 @media (max-width: 768px) {
-.section {
-  padding: 0px 20px 8%;
-}
+  .section {
+    padding: 0px 20px 8%;
+  }
 
 }
 
@@ -287,12 +514,31 @@ section {
 }
 
 /* =====================================
+   SERVICES – TÍTULO SECCIÓN
+===================================== */
+
+.servicios-title-wrapper {
+  max-width: 1200px;
+  margin: 120px auto 20px auto;
+  padding: 0 40px;
+}
+
+.servicios-section-title {
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #111;
+  text-align: center;
+}
+
+/* =====================================
    SERVICES – ACORDEÓN
 ===================================== */
 
 .services-accordion {
   max-width: 1300px;
-  margin: 100px 100px 50px 100px;
+  margin: 40px auto 50px auto;
   padding: 0 40px;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -309,8 +555,8 @@ section {
   background: none;
   border: none;
   width: 100%;
-  text-align: left;
-  font-family: 'IBM Plex Sans', sans-serif;
+  text-align: center;
+  font-family: 'Inter', Arial, sans-serif;
   font-size: 13px;
   font-weight: 400;
   letter-spacing: 0.2em;
@@ -319,6 +565,20 @@ section {
   padding-bottom: 12px;
   border-bottom: 1px solid #ddd;
   color: #111;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Efecto hover en título */
+.service-title:hover {
+  color: #4F6B54;
+  border-bottom-color: #4F6B54;
+}
+
+/* Título activo */
+.service-item.active .service-title {
+  color: #4F6B54;
+  border-bottom-color: #4F6B54;
+  font-weight: 500;
 }
 
 /* CONTENIDO */
@@ -341,6 +601,24 @@ section {
   text-transform: uppercase;
   color: #555;
   margin-bottom: 14px;
+  transform: translateY(-10px);
+  opacity: 0;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+
+  /* Viñeta personalizada */
+  position: relative;
+  padding-left: 18px;
+}
+
+.service-content li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 5px;
+  width: 6px;
+  height: 6px;
+  background-color: #346240;
+  border-radius: 50%;
 }
 
 /* ACTIVO */
@@ -349,15 +627,65 @@ section {
   opacity: 1;
 }
 
+/* Animar items de lista cuando se abre */
+.service-item.active .service-content li {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Delay progresivo para cada item */
+.service-item.active .service-content li:nth-child(1) {
+  transition-delay: 0.1s;
+}
+
+.service-item.active .service-content li:nth-child(2) {
+  transition-delay: 0.15s;
+}
+
+.service-item.active .service-content li:nth-child(3) {
+  transition-delay: 0.2s;
+}
+
+.service-item.active .service-content li:nth-child(4) {
+  transition-delay: 0.25s;
+}
+
 /* =====================================
-   RESPONSIVE
+  RESPONSIVE
 ===================================== */
 
-@media (max-width: 900px) {
+/* MOBILE VERTICAL */
+@media (max-width: 900px) and (orientation: portrait) {
+
   .services-accordion {
     grid-template-columns: 1fr;
-    row-gap: 24px;
-      margin: 50px 10px 100px 10px;
+    margin: 40px 16px 80px 16px;
+    padding: 0;
+    row-gap: 32px;
+  }
+
+  .service-item {
+    width: 100%;
+    text-align: center;
+  }
+
+  .service-title {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 100%;
+    padding: 0 0 12px 0;
+    /* Reset de padding lateral para centrado perfecto */
+  }
+
+  /* Ajuste para que la viñeta quede pegada al texto en móvil */
+  .service-content li {
+    display: block;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
   }
 
   .service-title {
@@ -369,6 +697,16 @@ section {
   }
 }
 
+/* MOBILE / TABLET HORIZONTAL */
+@media (max-width: 1100px) and (orientation: landscape) {
+
+  .services-accordion {
+    grid-template-columns: repeat(2, 1fr);
+    margin: 40px 20px;
+    column-gap: 32px;
+  }
+
+}
 
 
 /* =====================================================
@@ -423,12 +761,13 @@ section {
 .project-overlay span {
   max-width: 80%;
   line-height: 1.3;
-color: white;
-font-size: 14px;
+  color: white;
+  font-size: 14px;
   text-align: center;
-   letter-spacing: 0.2em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  white-space: normal; /* permite 2 líneas */
+  white-space: normal;
+  /* permite 2 líneas */
 }
 
 /* =====================================================
@@ -526,12 +865,13 @@ font-size: 14px;
 .project-overlay-landing span {
   max-width: 80%;
   line-height: 1.3;
-color: white;
-font-size: 14px;
+  color: white;
+  font-size: 14px;
   text-align: center;
-   letter-spacing: 0.2em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  white-space: normal; /* permite 2 líneas */
+  white-space: normal;
+  /* permite 2 líneas */
 }
 
 /* =====================================================
@@ -560,7 +900,7 @@ font-size: 14px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
-    padding-top:100px;
+  padding-top: 100px;
 }
 
 /* Tablet */
@@ -574,11 +914,126 @@ font-size: 14px;
 @media (max-width: 520px) {
   .projects-grid-landing {
     grid-template-columns: repeat(1, 1fr);
+    padding-top: 0;
+    /* Eliminado el padding excesivo de 100px */
   }
 }
 
+/* =====================================================
+   PROYECTOS – FILTRO
+===================================================== */
+
+.projects-filters {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 160px;
+  margin-bottom: 10px;
+  position: sticky;
+  top: var(--header-height);
+  background: white;
+  padding: 1rem 0;
+  z-index: 10;
+}
 
 
+.page-proyectos .projects-filters {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.filter-btn {
+  padding: 0.5rem 1.4rem;
+  border-radius: 999px;
+  border: 1px solid #ffffff;
+  background: transparent;
+  font-family: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-btn.active {
+  background: #4F6B54;
+  color: #fff;
+}
+
+@media (max-width: 900px) {
+  .projects-filters {
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 100px;
+  }
+
+  .filter-btn {
+    font-size: 0.8rem;
+    padding: 0.45rem 1rem;
+  }
+}
+
+/* Ajuste específico para Landscape Móvil */
+@media (max-width: 900px) and (orientation: landscape) {
+  .projects-grid-landing {
+    padding-top: 0;
+  }
+
+  .projects-filters {
+    margin-top: 100px;
+    /* Ajuste para landscape */
+    margin-bottom: 20px;
+  }
+
+  .services-accordion {
+    row-gap: 60px;
+    /* Más espacio entre filas de servicios */
+  }
+}
+
+@media (max-width: 520px) {
+  .projects-filters {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    justify-content: center;
+    gap: 0.6rem 0.8rem;
+
+    margin-top: 130px;
+    margin-bottom: 1.8rem;
+  }
+
+  /* Todos arriba */
+  .projects-filters .filter-btn[data-filter="all"] {
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+
+  .filter-btn {
+    font-size: 0.75rem;
+    padding: 0.45rem 0.9rem;
+    white-space: nowrap;
+  }
+
+  .projects-filters::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* =====================================================
+   PROYECTOS – ANIMACIÓN FILTRO
+===================================================== */
+
+.project-landing {
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  will-change: opacity, transform;
+}
+
+.project-landing.is-hidden {
+  opacity: 0;
+  transform: scale(0.96);
+  pointer-events: none;
+  position: absolute;
+  visibility: hidden;
+}
 
 /* =====================================
    BENEFICIOS – ACORDEÓN
@@ -586,11 +1041,21 @@ font-size: 14px;
 
 .beneficios-accordion {
   max-width: 1600px;
-  margin: 100px 100px 50px 100px;
+  margin: 20px auto 50px auto;
   padding: 0 40px;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   column-gap: 40px;
+}
+
+.beneficios-header {
+  display: flex;
+  flex-direction: column;
+  /* 🔑 icono arriba / texto abajo */
+  align-items: center;
+  /* 🔑 centrado horizontal */
+  text-align: center;
+  cursor: pointer;
 }
 
 /* ITEM */
@@ -600,16 +1065,29 @@ font-size: 14px;
 
 /* ICONO */
 .beneficios-icono {
-  font-size:40px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.beneficios-icono img {
+  width: 120px;
+  /* ajusta a gusto */
+  height: auto;
 }
 
 /* TÍTULO */
 .beneficios-title {
+  min-height: 55px;
+  /* 🔑 iguala títulos 1 o 2 líneas */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   background: none;
   border: none;
   width: 100%;
-  text-align: left;
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: 'Inter', Arial, sans-serif;
   font-size: 13px;
   font-weight: 400;
   letter-spacing: 0.2em;
@@ -618,6 +1096,7 @@ font-size: 14px;
   padding-bottom: 12px;
   border-bottom: 1px solid #ddd;
   color: #111;
+  line-height: 1.4;
 }
 
 /* CONTENIDO */
@@ -640,6 +1119,21 @@ font-size: 14px;
   text-transform: uppercase;
   color: #555;
   margin-bottom: 14px;
+
+  /* Viñeta personalizada */
+  position: relative;
+  padding-left: 18px;
+}
+
+.beneficios-content li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 5px;
+  width: 6px;
+  height: 6px;
+  background-color: #346240;
+  border-radius: 50%;
 }
 
 /* ACTIVO */
@@ -648,15 +1142,69 @@ font-size: 14px;
   opacity: 1;
 }
 
+/* ANIMACIÓN ICONO */
+.beneficios-icono img {
+  transition: transform 0.35s ease, opacity 0.35s ease;
+  transform-origin: center;
+}
+
+/* hover */
+.beneficios-item:hover .beneficios-icono img {
+  transform: scale(1.08);
+}
+
+/* activo (cuando está desplegado) */
+.beneficios-item.active .beneficios-icono img {
+  transform: scale(1.12);
+}
+
+/* =====================================
+   BENEFICIOS – TÍTULO SECCIÓN
+===================================== */
+
+.beneficios-title-wrapper {
+  max-width: 1200px;
+  margin: 160px auto 40px auto;
+  padding: 0 40px;
+}
+
+/* =====================================
+   NOSOTROS – TÍTULO SECCIÓN
+===================================== */
+
+.nosotros-title-wrapper {
+  max-width: 1200px;
+  margin: 160px auto 40px auto;
+  padding: 0 40px;
+}
+
+.beneficios-section-title {
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #111;
+}
+
 /* =====================================
    RESPONSIVE
 ===================================== */
 
-@media (max-width: 900px) {
+@media (max-width: 900px) and (orientation: portrait) {
+
   .beneficios-accordion {
     grid-template-columns: 1fr;
-    row-gap: 24px;
-          margin: 50px 10px 100px 10px;
+    margin: 20px 16px 80px 16px;
+    padding: 0;
+    row-gap: 32px;
+  }
+
+  .beneficios-item {
+    width: 100%;
+  }
+
+  .beneficios-header {
+    align-items: center;
   }
 
   .beneficios-title {
@@ -666,67 +1214,140 @@ font-size: 14px;
   .beneficios-content ul {
     margin-top: 16px;
   }
+
+  .beneficios-title-wrapper {
+    margin: 120px auto 32px auto;
+    padding: 0 16px;
+  }
+
+  .beneficios-section-title {
+    font-size: 18px;
+    letter-spacing: 0.22em;
+  }
+}
+
+@media (max-width: 1100px) and (orientation: landscape) {
+
+  .beneficios-accordion {
+    grid-template-columns: repeat(2, 1fr);
+    margin: 40px 20px;
+    column-gap: 32px;
+  }
+
 }
 
 /* =====================================
-   GALERIA INTERACTIVA
+   NORMALIZACIÓN DE ICONOS + ALINEACIÓN
 ===================================== */
 
-.galeria {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 600px;
-    padding-bottom: 100px;
+.beneficios-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
+
+/* CONTENEDOR DEL ICONO (MARCO COMÚN) */
+.beneficios-icono {
+  height: 140px;
+  /* 🔑 MISMA ALTURA PARA TODOS */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  /* aire entre icono y título */
+}
+
+/* SVG DENTRO DEL MARCO */
+.beneficios-icono img {
+  height: 110px;
+  /* 🔑 tamaño real visible */
+  width: auto;
+  display: block;
+}
+
+/* TÍTULO */
+.beneficios-title {
+  text-align: center;
+  padding-bottom: 14px;
+  width: 100%;
+}
+
+/* ASEGURA QUE TODAS LAS LÍNEAS COINCIDAN */
+.beneficios-item {
+  display: flex;
+  flex-direction: column;
+}
+
+/* =====================================
+   GALERIA DE CROQUIS - CARRUSEL EDITORIAL
+===================================== */
+
+.carrusel-contenedor {
+  width: 100%;
+  overflow-y: hidden;
+  padding: 100px 0;
+}
+
+.carrusel-track {
+  display: flex;
+  gap: 24px;
+  padding-left: 6vw;
+  padding-right: 6vw;
+  width: max-content;
+  /* 👈 CLAVE */
+  will-change: transform;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+
+/* ocultar scrollbar */
+.carrusel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.carrusel-item {
+  flex: 0 0 30vw;
+  /* tamaño editorial */
+  transition: transform 0.4s ease;
+  scroll-snap-align: start;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  /* 👈 NO recorta */
+  display: block;
+}
+
+.carrusel-item:hover {
+  transform: scale(1.03);
+}
+
+.carrusel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.carrusel-item.clone {
+  pointer-events: none;
+}
+
 
 @media (max-width: 900px) {
-.galeria{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 900px;
-    padding-bottom: 100px;
-}
-}
-.item {
-    flex: 1;
-    height: 100%
-}
+  .carrusel-item {
+    flex: 0 0 60vw;
+  }
 
-.item:nth-child(1) {
-    background-image: url("images/proyecto-01.jpg")
-}
-
-.item:nth-child(2) {
-    background-image: url("images/proyecto-02.jpg")
-}
-
-.item:nth-child(3) {
-    background-image: url("images/proyecto-03.jpg")
-}
-
-.item:nth-child(4) {
-    background-image: url("images/proyecto-01.jpg")
-}
-
-.item:nth-child(5) {
-    background-image: url("images/proyecto-02.jpg")
-}
-
-.item {
-    background-position: center;
-    background-size: cover;
-    transition: flex 0.8s ease;
-}
-
-.item:hover {
-    flex: 5;
+  .carrusel-contenedor {
+    padding: 60px 0;
+  }
 }
 
 /* =====================================================
    CONTACTO
-===================================================== */ 
+===================================================== */
 
 .contact-text {
   margin-bottom: 30px;
@@ -756,6 +1377,7 @@ font-size: 14px;
 .contact-section {
   padding: 40px 0px 0px;
 }
+
 .contact-section-landing {
   padding: 160px 0px 0px;
 }
@@ -766,6 +1388,7 @@ font-size: 14px;
   margin: 0 auto;
   padding: 0 40px;
   cursor: pointer;
+  text-transform: uppercase;
 }
 
 .contact-intro h2 {
@@ -773,9 +1396,10 @@ font-size: 14px;
 }
 
 
-@media (max-width: 768px) {.contact-section{padding: 10px 0px}
-
-
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 10px 0px;
+  }
 }
 
 
@@ -787,11 +1411,12 @@ font-size: 14px;
   margin: 60px auto 0;
   padding: 0 40px 100px;
 }
+
 .form-row h4 {
   font-size: 16px;
   padding-bottom: 14px;
-  font-family: 'IBM Plex Mono', monospace;
-  font-weight:300;
+  font-family: 'Inter', Arial, sans-serif;
+  font-weight: 300;
 }
 
 .form-row {
@@ -803,17 +1428,17 @@ font-size: 14px;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   margin-bottom: 24px;
-  
+
 }
 
 @media (max-width: 768px) {
-.form-grid {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: 24px;
-  margin-bottom: 24px;
-  
-}
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 24px;
+    margin-bottom: 24px;
+
+  }
 }
 
 .contact-form input,
@@ -824,60 +1449,52 @@ font-size: 14px;
   font-size: 14px;
   border: 1px solid #ccc;
   border-top: 0px white;
-    border-right: 0px white;
-    border-left: 0px white;
+  border-right: 0px white;
+  border-left: 0px white;
 
- font-family: 'IBM Plex Mono', monospace;
-  font-weight:300;
+  font-family: 'Inter', Arial, sans-serif;
+  font-weight: 300;
   color: black;
 }
 
 .contact-form textarea {
   min-height: 120px;
   resize: vertical;
-  padding-left:16px;
-  color:black;
+  padding-left: 16px;
+  color: black;
 }
 
 
 
 .contact-form button {
   display: inline-flex;
-  padding: .75rem 1.25rem;
-  border-radius: 10rem;
+  padding: 0.5rem 1.4rem;
+  /* Match filter-btn */
+  border-radius: 999px;
+  /* Match filter-btn */
   color: #111;
   background-color: transparent;
   border: 1px solid #111;
-  font-size: 14px;
+  /* Visible border */
+  font-size: 0.85rem;
+  /* Match filter-btn */
   font-weight: 300;
   letter-spacing: .1rem;
-  font-family: 'IBM Plex Sans', sans-serif;
-  
+  font-family: 'Inter', Arial, sans-serif;
   text-decoration: none;
-  transition: all .3s ease;
+  transition: all 0.2s ease;
+  /* Match filter-btn */
+  cursor: pointer;
   position: relative;
   overflow: hidden;
   z-index: 1;
 }
 
-/* fondo animado */
-.contact-form button::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  width: 0%;
-  background: #111;
-  transition: all .3s ease;
-  z-index: -1;
-}
-
-/* hover */
+/* hover simple como filter-btn active */
 .contact-form button:hover {
+  background: #4F6B54;
   color: #fff;
-}
-
-.contact-form button:hover::before {
-  width: 100%;
+  border-color: #4F6B54;
 }
 
 /* AJUSTES VISUALES CONTACTO */
@@ -909,7 +1526,8 @@ font-size: 14px;
 }
 
 .about-grid {
-  max-width: 1200px;   /* ← AJUSTA este valor al mismo que proyectos */
+  max-width: 1200px;
+  /* ← AJUSTA este valor al mismo que proyectos */
   margin: 0 auto;
   padding: 0 40px;
 
@@ -959,77 +1577,91 @@ font-size: 14px;
 
 
 .footer {
-    background-color: #346240;
-    color: #fff;
-    padding: 40px 0;
+  background-color: #346240;
+  color: #fff;
+  padding: 40px 0 0 0;
 }
 
 .footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 0 140px;
-    margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0 140px;
+  margin: 0 auto;
 }
 
 .footer-left {
-    flex: 1;
-    text-align: left;
+  flex: 1;
+  text-align: left;
 }
 
 .logofooter {
-    width: 200px;
-    padding-bottom:40px;
+  width: 200px;
+  padding-bottom: 40px;
+  display: block;
+  /* Asegurar bloque para que width funcione bien */
+  margin-top: 20px;
 }
 
 
 
+.footer-social {
+  width: 200px;
+  /* Mismo ancho del logo */
+  text-align: center;
+  /* Centrar icono respecto al ancho del logo */
+  display: flex;
+  justify-content: center;
+}
+
 .footer-social a {
-    margin-right: 15px;
+  margin-right: 0;
+  /* Eliminado margen derecho para centrado perfecto */
 }
 
 .footer-social img {
-    width: 40px;
+  width: 40px;
 }
 
 .footer-right {
 
-    text-align: right;
+  text-align: right;
 }
 
 .footer-links {
-    list-style: none;
-    padding: 0;
-    height: 100%;
-    width: 100%;
+  list-style: none;
+  padding: 0;
+  height: 100%;
+  width: 100%;
 
 }
 
 .footer-links li {
-    font-size: 50px;
+  font-size: 50px;
 }
 
 .footer-links li span {
-    margin-right: 10px;
-    font-size: 20px;
-      font-family: 'IBM Plex Mono', monospace;
-    font-weight: 400;
-    font-style: italic;
+  margin-right: 10px;
+  font-size: 20px;
+  font-family: 'Inter', Arial, sans-serif;
+  font-weight: 400;
+  font-style: italic;
 }
 
 .footer-links a {
-    text-decoration: none;
-    color: #fff;
-      font-family: 'IBM Plex Mono', monospace;
-font-size:30px;
+  text-decoration: none;
+  color: #fff;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 30px;
 
 }
 
 .footer-credits {
-    text-align: center;
-    padding: 20px 0;
-    font-size: 14px;
-    border-top: 1px solid #555;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 14px;
+  border-top: 1px solid #ffffff;
+  margin-top: 60px;
 }
 
 /* =====================================
@@ -1038,91 +1670,17 @@ font-size:30px;
 
 @media (max-width: 768px) {
 
-.footer-content {
+  .footer-content {
     display: grid;
     grid-template-columns: 1fr;
     row-gap: 60px;
-     padding: 0 40px;
-}
+    padding: 0 40px;
+  }
 
 
-.footer-right {
+  .footer-right {
     flex: 1;
     text-align: left;
-}
-}
-/* =====================================
-   HEADER – FIX DEFINITIVO
-===================================== */
-
-.header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 10;
-}
-
-
-.header-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 20px 40px;
-  box-sizing: border-box;
-  position:relative;
-}
-
-/* LOGO */
-.logo {
-  display: block;
-  width: 120px;       /* tamaño base */
-  height: auto;
-  flex-shrink: 0;     /* 🔑 nunca desaparece */
-}
-
-/* estado inicial: header transparente */
-.header .logo-white {
-  opacity: 1;
-}
-
-.header .logo-black {
-  opacity: 0;
-}
-
-/* estado con scroll */
-body.scrolled .header .logo-white {
-  opacity: 0;
-  visibility:hidden;
-  display:none;
-}
-
-body.scrolled .header .logo-black {
-  opacity: 1;
-}
-
-
-/* NAV */
-.header nav {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-  font-family:'IBM Plex Mono', monospace;
-  letter-spacing:1px;
-}
-
-
-
-/* RESPONSIVE */
-@media (max-width: 1100px) {
-  .logo {
-    width: 140px;
-  }
-}
-
-@media (max-width: 768px) {
-  .logo {
-    width: 110px;
   }
 }
 
@@ -1160,7 +1718,8 @@ body.scrolled .header .logo-black {
   line-height: 1.3;
 
   text-align: center;
-  white-space: normal; /* permite 2 líneas */
+  white-space: normal;
+  /* permite 2 líneas */
 }
 
 /* =====================================================
@@ -1187,83 +1746,32 @@ body.scrolled .header .logo-black {
 
 .btn-outline {
   display: inline-flex;
-  padding: .75rem 1.25rem;
-  border-radius: 10rem;
+  padding: 0.5rem 1.4rem;
+  /* Match filter-btn */
+  border-radius: 999px;
+  /* Match filter-btn */
   color: #111;
   background-color: transparent;
   border: 1px solid #111;
-  font-size: 14px;
+  /* Visible border */
+  font-size: 0.85rem;
+  /* Match filter-btn */
   font-weight: 300;
   letter-spacing: .1rem;
-  font-family: 'IBM Plex Sans', sans-serif;
-  
+  font-family: 'Inter', Arial, sans-serif;
   text-decoration: none;
-  transition: all .3s ease;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
+  transition: all 0.2s ease;
+  /* Match filter-btn */
+  cursor: pointer;
 }
 
-/* fondo animado */
-.btn-outline::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  width: 0%;
-  background: #111;
-  transition: all .3s ease;
-  z-index: -1;
-}
-/* CTA bajo proyectos */
-.projects-cta {
-  margin-top: 60px;
-  text-align: center;
-  margin-bottom: 60px;
-}
-
-
-/* hover */
+/* hover simple como filter-btn active */
 .btn-outline:hover {
+  background: #4F6B54;
   color: #fff;
+  border-color: #4F6B54;
 }
 
-.btn-outline:hover::before {
-  width: 100%;
-}
-
-/* =====================================================
-   BOTÓN OUTLINE – SECCIÓN SPLIT
-===================================================== */
-.btn-split-section {
-  display: inline-flex;
-  padding: .75rem 1.25rem;
-  border-radius: 10rem;
-  color: #111;
-  background-color: transparent;
-  border: 1px solid #111;
-  font-size: 14px;
-  font-weight: 300;
-  letter-spacing: .1rem;
-  font-family: 'IBM Plex Sans', sans-serif;
-  
-  text-decoration: none;
-  transition: all .3s ease;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  width: 30%;
-}
-
-/* fondo animado */
-.btn-split-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  width: 0%;
-  background: #111;
-  transition: all .3s ease;
-  z-index: -1;
-}
 /* CTA bajo proyectos */
 .projects-cta {
   margin-top: 60px;
@@ -1271,34 +1779,36 @@ body.scrolled .header .logo-black {
   margin-bottom: 60px;
 }
 
-
-/* hover */
-.btn-split-section:hover {
-  color: #fff;
-}
-
-.btn-split-section:hover::before {
-  width: 100%;
-}
-
-@media (max-width: 768px) {
-.btn-split-section {
-  width: 45%;
-}
-}
 /* =====================================
    HERO SLIDESHOW – BANNER PRINCIPAL
 ===================================== */
 
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 .hero-slideshow {
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   overflow: hidden;
+
+  /* MUY IMPORTANTE PARA PRO MAX */
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+.hero-slides {
+  position: absolute;
+  inset: 0;
 }
 
 .hero-slides img {
   position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1310,50 +1820,166 @@ body.scrolled .header .logo-black {
   opacity: 1;
 }
 
-/* Overlay sutil */
+/* Overlay */
 .hero-slideshow::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.35);
+  background: rgba(0, 0, 0, 0.35);
   z-index: 1;
 }
 
-/* Texto central */
+/* Texto */
 .hero-slideshow .hero-text {
   position: absolute;
-  top: 50%;
+  bottom: 90px;
+  /* 🔑 ahora vive abajo */
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   z-index: 2;
   text-align: center;
   color: #fff;
+  width: 100%;
+  pointer-events: none;
 }
 
 .hero-slideshow .hero-text h1 {
-  font-size: 56px;
+  font-size: 42px;
   font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
 }
 
 .hero-slideshow .hero-text p {
-  font-size: 18px;
-  margin-top: 10px;
-  letter-spacing: 0.08em;
+  font-size: 14px;
+  margin-top: 12px;
+  letter-spacing: 0.18em;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* Flecha */
+.hero-scroll {
+  margin-top: 28px;
+  font-size: 22px;
+  opacity: 0.6;
+  animation: scrollHint 1.8s infinite ease-in-out;
+}
+
+@keyframes scrollHint {
+  0% {
+    transform: translateY(0);
+    opacity: 0.3;
+  }
+
+  50% {
+    transform: translateY(8px);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 0.3;
+  }
+}
+
+/* Responsive landscape mobile */
+@media (max-width: 900px) and (orientation: landscape) {
+
+  .hero-slideshow {
+    height: 100vh;
+    /* NO svh ni dvh acá */
+  }
+}
+
+/* Ajustes HERO texto + flecha en mobile */
+@media (max-width: 900px) {
+
+  .hero-slideshow .hero-text {
+    bottom: 60px;
+  }
+
   .hero-slideshow .hero-text h1 {
-    font-size: 36px;
+    font-size: 28px;
+    letter-spacing: 0.22em;
   }
 
   .hero-slideshow .hero-text p {
-    font-size: 14px;
+    font-size: 12px;
+  }
+
+  .hero-scroll {
+    font-size: 20px;
   }
 }
 
+/* HERO – móvil portrait (vertical) - FIX para recorte excesivo */
+@media (max-width: 768px) and (orientation: portrait) {
 
-    /* ===============================
+  .hero-slideshow .hero-slides img {
+    object-fit: contain;
+    object-position: center;
+  }
+
+  .hero-slideshow {
+    background: #346240;
+  }
+
+  /* Desactivar overlay oscuro solo en móvil portrait */
+  .hero-slideshow::after {
+    display: none;
+  }
+}
+
+/* HERO – ajustes finos en mobile landscape */
+@media (max-width: 900px) and (orientation: landscape) {
+
+  .hero-slideshow .hero-text {
+    bottom: 32px;
+    opacity: 0.9;
+    /* más abajo */
+  }
+
+  .hero-slideshow .hero-text h1 {
+    font-size: 24px;
+    /* más chico */
+    letter-spacing: 0.18em;
+  }
+
+  .hero-slideshow .hero-text p {
+    font-size: 11px;
+    margin-top: 6px;
+  }
+
+  .hero-scroll {
+    font-size: 18px;
+    /* flecha más sutil */
+    margin-top: 12px;
+  }
+}
+
+/* HERO – móviles grandes en landscape (iPhone Pro Max / Pixel / Ultra) */
+@media (orientation: landscape) and (pointer: coarse) and (max-height: 500px) {
+
+  .hero-slideshow .hero-text {
+    bottom: 32px;
+  }
+
+  .hero-slideshow .hero-text h1 {
+    font-size: 24px;
+    letter-spacing: 0.18em;
+  }
+
+  .hero-slideshow .hero-text p {
+    font-size: 11px;
+    margin-top: 6px;
+  }
+
+  .hero-scroll {
+    font-size: 18px;
+    margin-top: 12px;
+  }
+}
+
+/* ===============================
    MENU HAMBURGUESA
 ================================ */
 
@@ -1372,7 +1998,7 @@ body.scrolled .header .logo-black {
 .menu-toggle span {
   display: block;
   height: 2px;
-  background:white;
+  background: white;
   border-radius: 2px;
   transition: 0.3s;
 }
@@ -1380,9 +2006,6 @@ body.scrolled .header .logo-black {
 body.scrolled .menu-toggle span {
   background: #111;
 }
-
-
-
 
 /* ===============================
    NAV MOBILE
@@ -1394,13 +2017,13 @@ body.scrolled .menu-toggle span {
     display: flex;
   }
 
-  .header nav {
+  .nav {
     position: fixed;
     top: 0;
     right: -100%;
     width: 100%;
     height: 100vh;
-    background: black;
+    background: #346240;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -1408,12 +2031,12 @@ body.scrolled .menu-toggle span {
     transition: right 0.4s ease;
   }
 
-  .header nav a {
+  .nav a {
     font-size: 20px;
     margin: 0;
   }
 
-  .header nav.open {
+  .nav.open {
     right: 0;
   }
 
@@ -1452,40 +2075,46 @@ body.scrolled .menu-toggle span {
 .split-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: 10vh;
+  min-height: 70vh;
+}
+
+.split-image {
+  width: 100%;
+  height: 100%;
 }
 
 /* Imagen */
 .split-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
   display: block;
 }
 
 /* Texto */
 .split-text {
-  background: white;
-  color: black;
+  background: #346240;
+  color: rgb(179, 179, 179);
   padding: 0px 80px;
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
 }
 
-.split-text h3 {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 18px;
-  font-weight: 400;
-  margin-bottom: 20px;
+.split-text p {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 20px;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 480px;
 }
 
-.split-text p {
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 14px;
-  line-height: 1.6;
-  margin-bottom: 30px;
-  max-width: 480px;
+.split-text .key {
+  font-weight: 500;
+  /* bold elegante */
+  color: #ffffff;
+  /* color palabras destacadas */
 }
 
 /* ESPEJADO SOLO EN DESKTOP */
@@ -1493,7 +2122,7 @@ body.scrolled .menu-toggle span {
   direction: rtl;
 }
 
-.split-row.reverse > * {
+.split-row.reverse>* {
   direction: ltr;
 }
 
@@ -1506,6 +2135,13 @@ body.scrolled .menu-toggle span {
 
   .split-text {
     padding: 40px 20px;
+    text-align: center;
+    align-items: center;
+  }
+
+  .split-text p {
+    max-width: 100%;
+    margin: 0;
   }
 
   /* desactivamos el espejo en mobile */
@@ -1517,8 +2153,6 @@ body.scrolled .menu-toggle span {
 * {
   box-sizing: border-box;
 }
-
-
 
 .equipo {
   padding: 10px 80px 5%;
@@ -1532,7 +2166,6 @@ body.scrolled .menu-toggle span {
   gap: 80px;
   align-items: center;
 }
-
 
 .equipo__descripcion {
   font-size: 16px;
@@ -1562,24 +2195,17 @@ body.scrolled .menu-toggle span {
 .equipo__persona span {
   font-size: 16px;
   color: grey;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'Inter', Arial, sans-serif;
 }
-
-
 
 /* ESPEJADO SOLO EN DESKTOP */
 .equipo__contenido.reverse {
   direction: rtl;
 }
 
-.equipo__contenido.reverse > * {
+.equipo__contenido.reverse>* {
   direction: ltr;
 }
-
-
-
-
-
 
 /* 📱 Responsive */
 @media (max-width: 768px) {
@@ -1587,6 +2213,8 @@ body.scrolled .menu-toggle span {
     grid-template-columns: 1fr;
     gap: 40px;
     text-align: center;
+    display: flex;
+    flex-direction: column-reverse;
   }
 
   .equipo__descripcion {
@@ -1594,8 +2222,82 @@ body.scrolled .menu-toggle span {
   }
 }
 
+/* ==============================
+   PAGINA PROYECTO TIPO
+============================== */
+/* ==============================
+   CONTENEDOR – DISTANCIA DE LA GALERIA DE LOS BORDES DE LA PANTALLA
+============================== */
 
+.gallery-wrap {
+  --side-margin: 2vw;
+  /* 👈 AJUSTÁS ESTO A GUSTO */
 
-/* LANDING PROYECTOS */
+  padding-left: var(--side-margin);
+  padding-right: var(--side-margin);
+  box-sizing: border-box;
+}
 
+.gallery-fullbleed {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
 
+/* ==============================
+   GALERÍA – GRID PURO
+============================== */
+
+.project-gallery {
+  --gap: 1rem;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 1px;
+  gap: var(--gap);
+}
+
+.project-gallery figure {
+  grid-row: span var(--rows);
+  align-self: start;
+  break-inside: avoid;
+  margin-bottom: 0;
+}
+
+.project-gallery img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Imagen destacada */
+.project-gallery .is-wide {
+  grid-column: span 2;
+}
+
+.is-wide {
+  grid-column: span 1;
+}
+
+/* ============================
+   RESPONSIVE
+============================ */
+
+@media (max-width: 1024px) {
+  .project-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .project-gallery .is-wide {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 640px) {
+  .project-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .project-gallery .is-wide {
+    grid-column: span 1;
+  }
+}

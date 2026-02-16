@@ -1,182 +1,150 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <title>Estudio Tratto — Arquitectura y Construcción</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
-<script>
-  // DECIDE SI MOSTRAR INTRO ANTES DEL RENDER
-
-</script>
+  <meta name="description" content="Contacta a Estudio Tratto para cotizar tu proyecto de arquitectura y construcción.">
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body class="page-proyectos">
 
 
-<!-- HEADER -->
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
 
-<header class="header">
-  <div class="header-inner">
+      <a href="#" class="logo-link js-go-home" aria-label="Ir al inicio">
+        <img src="images/logo-tratto-blanco.svg" alt="Estudio Tratto" class="logo logo-white">
+        <img src="images/logo-tratto-negro.svg" alt="Estudio Tratto" class="logo logo-black">
+      </a>
 
-    <img src="images/logo-tratto-blanco.svg" alt="Estudio Tratto" class="logo logo-white">
-<img src="images/logo-tratto-negro.svg" alt="Estudio Tratto" class="logo logo-black">
+      <!-- BOTÓN HAMBURGUESA -->
+      <button class="menu-toggle" aria-label="Abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
-    <!-- BOTÓN HAMBURGUESA -->
-    <button class="menu-toggle" aria-label="Abrir menú">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+      <!-- NAV -->
+      <nav class="nav">
+        <a href="/index.html#equipo">Nosotros</a>
+        <a href="/index.html#servicios">Servicios</a>
+        <a href="/proyectos.html">Proyectos</a>
+        <a href="/index.html#contacto">Contacto</a>
 
-    <!-- NAV -->
-    <nav class="nav">
-      <a href="#equipo index.html" class="enter-site">Nosotros</a>
-      <a href="#servicios" class="enter-site">Servicios</a>
-      <a href="proyectos.html" class="enter-site">Proyectos</a>
-      <a href="#contacto" class="enter-site">Contacto</a>
+      </nav>
 
+    </div>
+  </header>
 
+  <!-- CONTACTO -->
+  <section id="contacto" class="contact-section-landing">
 
-  </div>
-</header>
-
- <!-- CONTACTO -->
-<section id="contacto" class="contact-section-landing">
-
-  <!-- TEXTO VISIBLE SIEMPRE -->
-  <div class="contact-intro">
-    <h2>Escríbenos para cotizar tu proyecto</h2>
-  </div>
-
- <!-- FORMULARIO OCULTO -->
-<div class="contact-form-wrapper" id="contactForm">
-
-  <form
-    class="contact-form"
-    action="mailto:contacto@estudiotratto.cl"
-    method="POST"
-    enctype="text/plain"
-  >
-
-    <div class="form-row">
-      <h4>Tipo de proyecto*</h4>
-      <select name="tipo_proyecto" required>
-        <option>Proyecto desde cero</option>
-        <option>Remodelación</option>
-        <option>Regularización</option>
-        <option>Asesoría técnica</option>
-      </select>
+    <!-- TEXTO VISIBLE SIEMPRE -->
+    <div class="contact-intro">
+      <h2>Escríbenos para cotizar tu proyecto</h2>
     </div>
 
-    <div class="form-grid">
-      <input
-        type="text"
-        name="nombre"
-        placeholder="Nombre*"
-        required
-      >
+    <!-- FORMULARIO OCULTO -->
+    <div class="contact-form-wrapper" id="contactForm">
 
-      <input
-        type="email"
-        name="correo"
-        placeholder="Correo*"
-        required
-      >
+      <form class="contact-form" action="mailto:contacto@estudiotratto.cl" method="POST" enctype="text/plain">
 
-      <input
-        type="tel"
-        name="movil"
-        placeholder="Móvil*"
-        required
-      >
+        <div class="form-row">
+          <h4>Tipo de proyecto*</h4>
+          <select name="tipo_proyecto" required>
+            <option>Proyecto desde cero</option>
+            <option>Remodelación</option>
+            <option>Regularización</option>
+            <option>Asesoría técnica</option>
+          </select>
+        </div>
+
+        <div class="form-grid">
+          <input type="text" name="nombre" placeholder="Nombre*" required>
+
+          <input type="email" name="correo" placeholder="Correo*" required>
+
+          <input type="tel" name="movil" placeholder="Móvil*" required>
+        </div>
+
+
+
+        <div class="form-row">
+          <h4>Región*</h4>
+          <select name="region" required>
+            <option>Arica y Parinacota</option>
+            <option>Tarapacá</option>
+            <option>Antofagasta</option>
+            <option>Atacama</option>
+            <option>Coquimbo</option>
+            <option>Valparaíso</option>
+            <option>Metropolitana</option>
+            <option>Libertador General Bernardo O'Higgins</option>
+            <option>Maule</option>
+            <option>Ñuble</option>
+            <option>Biobío</option>
+            <option>Los Ríos</option>
+            <option>Los Lagos</option>
+            <option>Aysén del General Carlos Ibañez del Campo</option>
+            <option>Magallanes y Antártica Chilena</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <input type="text" name="comuna" placeholder="Comuna*" required>
+        </div>
+
+        <div class="form-row">
+          <textarea name="mensaje" placeholder="Cuéntanos sobre tu proyecto"></textarea>
+        </div>
+
+        <button type="submit">Enviar →</button>
+
+      </form>
+
     </div>
 
-  
-
-   <div class="form-row">
-      <h4>Región*</h4>
-      <select name="region" required>
-        <option>Arica y Parinacota</option>
-        <option>Tarapacá</option>
-        <option>Antofagasta</option>
-        <option>Atacama</option>
-         <option>Coquimbo</option>
-        <option>Valparaíso</option>
-        <option>Metropolitana</option>
-        <option>Libertador General Bernardo O'Higgins</option>
-          <option>Maule</option>
-         <option>Ñuble</option>
-        <option>Biobío</option>
-        <option>Los Ríos</option>
-        <option>Los Lagos</option>
-        <option>Aysén del General Carlos Ibañez del Campo</option>
-        <option>Magallanes y Antártica Chilena</option>
-      </select>
-    </div>
-
-    <div class="form-row">
-      <input
-        type="text"
-        name="comuna"
-        placeholder="Comuna*"
-        required
-      >
-    </div>
-
-    <div class="form-row">
-      <textarea
-        name="mensaje"
-        placeholder="Cuéntanos sobre tu proyecto"
-      ></textarea>
-    </div>
-
-    <button type="submit">Enviar →</button>
-
-  </form>
-
-</div>
 
 
 
 
 
 
+  </section>
 
-</section>
 
- 
 
 
   <footer class="footer">
     <div class="footer-content">
-        <div class="footer-left">
-            <img src="images/logo-tratto-footer.svg" class="logofooter">
-            <div class="footer-social">
-                <a href="#"><img src="images/rrss-07.svg" alt="Facebook"></a>
-                <a href="#"><img src="images/rrss-08.svg" alt="Instagram"></a>
-                <a href="#"><img src="images/rrss-09.svg" alt="Y0utube"></a>
-            </div>
+      <div class="footer-left">
+        <img src="images/logo-tratto-footer.svg" class="logofooter">
+        <div class="footer-social">
+          <a href="https://www.instagram.com/nicolas.moralesu/" target="_blank"><img src="images/rrss-08.svg"
+              alt="Instagram"></a>
         </div>
-        <div class="footer-right">
-            <ul class="footer-links">
-                <li><span>01.</span> <a href="#equipo">NOSOTROS</a></li>
-                <li><span>02.</span> <a href="#servicios">SERVICIOS</a></li>
-                <li><span>03.</span> <a href="#proyectos">PROYECTOS</a></li>
-                <li><span>04.</span> <a href="#contacto">CONTACTO</a></li>
-            </ul>
-        </div>
+      </div>
+      <div class="footer-right">
+        <ul class="footer-links">
+          <li><a href="#equipo">NOSOTROS</a></li>
+          <li><a href="#servicios">SERVICIOS</a></li>
+          <li><a href="#proyectos">PROYECTOS</a></li>
+          <li><a href="#contacto">CONTACTO</a></li>
+        </ul>
+      </div>
     </div>
     <div class="footer-credits">
-        <p>© 2026. Nicolas Morales - Estudio Tratto.</p>
+      <p>© 2026. Nicolas Morales - Studio Tratto.</p>
     </div>
-</footer>
+  </footer>
 
-</main>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
+
 </html>
