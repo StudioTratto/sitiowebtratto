@@ -49,6 +49,37 @@ body {
 }
 
 /* =====================================================
+   GLOBAL NOISE OVERLAY
+===================================================== */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  /* Configuración base (Desktop) */
+  opacity: 0.4;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  background-position: 0 0;
+  background-size: 150px 150px;
+  background-repeat: repeat;
+}
+
+/* Configuración específica (Mobile) */
+@media (max-width: 768px) {
+  body::before {
+    opacity: 0.2;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    background-position: 0 0;
+    background-size: 120px 120px;
+    background-repeat: repeat;
+  }
+}
+
+/* =====================================================
    HEADER — ESTADO INTRO (TRANSPARENTE)
 ===================================================== */
 
@@ -519,7 +550,7 @@ section {
 
 .servicios-title-wrapper {
   max-width: 1200px;
-  margin: 120px auto 20px auto;
+  margin: 160px auto 40px auto;
   padding: 0 40px;
 }
 
@@ -537,8 +568,8 @@ section {
 ===================================== */
 
 .services-accordion {
-  max-width: 1300px;
-  margin: 40px auto 50px auto;
+  max-width: 1600px;
+  margin: 20px auto 120px auto;
   padding: 0 40px;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -739,6 +770,8 @@ section {
 
 .project img {
   width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
   display: block;
   z-index: 0;
 }
@@ -843,6 +876,8 @@ section {
 
 .project-landing img {
   width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
   display: block;
   z-index: 0;
 }
@@ -1174,7 +1209,7 @@ section {
 
 .nosotros-title-wrapper {
   max-width: 1200px;
-  margin: 160px auto 40px auto;
+  margin: 60px auto 40px auto;
   padding: 0 40px;
 }
 
@@ -1537,6 +1572,53 @@ section {
   align-items: center;
 }
 
+.contact-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 40px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  /* Wider form column */
+  gap: 80px;
+  /* Reduced gap */
+  align-items: flex-start;
+}
+
+/* COLUMNA IZQUIERDA: INFO */
+.contact-info-col {
+  padding-top: 0px;
+}
+
+/* COLUMNA DERECHA: FORMULARIO */
+.contact-form-col {
+  padding-left: 0;
+  /* Removed extra padding */
+}
+
+
+/* RESPONSIVE CONTACTO */
+@media (max-width: 900px) {
+  .contact-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 60px 20px;
+  }
+
+  .contact-main-title {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+
+  .contact-form-col {
+    padding-left: 0;
+  }
+
+  .contact-description {
+    max-width: 100%;
+    /* Allow full width on mobile */
+  }
+}
+
 /* TEXTO */
 .about-text {
   max-width: 600px;
@@ -1684,6 +1766,84 @@ section {
   }
 }
 
+/* MOBILE PORTRAIT - FOOTER COMPACTO */
+@media (max-width: 768px) and (orientation: portrait) {
+  .footer {
+    padding: 30px 0 10px 0;
+    /* Reduced padding */
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+    text-align: center;
+    gap: 20px;
+    row-gap: 20px;
+  }
+
+  .footer-left {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .logofooter {
+    width: 120px;
+    /* Reduced from 200px */
+    padding-bottom: 10px;
+    margin-top: 0;
+  }
+
+  .footer-social {
+    width: auto;
+    margin-top: 10px;
+    justify-content: center;
+  }
+
+  .footer-social img {
+    width: 24px;
+    /* Smaller icons */
+  }
+
+  .footer-right {
+    width: 100%;
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .footer-links li {
+    font-size: 24px;
+    /* Reduced from 50px */
+  }
+
+  .footer-links a {
+    font-size: 20px;
+    /* Reduced */
+  }
+
+  .footer-credits {
+    margin-top: 30px;
+    /* Reduced from 60px */
+    padding: 15px 0;
+    /* Reduced from 20px */
+  }
+
+  .footer-credits p {
+    font-size: 10px;
+    /* Smaller text */
+  }
+}
+
 /* =====================================================
    PROYECTOS – OVERLAY CENTRADO (RESPONSIVE)
 ===================================================== */
@@ -1825,7 +1985,7 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.35);
+  background: rgba(0, 0, 0, 0.1);
   z-index: 1;
 }
 
@@ -2075,7 +2235,11 @@ body.scrolled .menu-toggle span {
 .split-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: 70vh;
+  height: 35vh !important;
+  min-height: 350px;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
 }
 
 .split-image {
@@ -2087,6 +2251,8 @@ body.scrolled .menu-toggle span {
 .split-image img {
   width: 100%;
   height: 100%;
+  max-height: 35vh !important;
+  /* Match row height */
   object-fit: contain;
   object-position: center;
   display: block;
@@ -2100,6 +2266,8 @@ body.scrolled .menu-toggle span {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100%;
+  /* Fill the row height */
 }
 
 .split-text p {
@@ -2126,22 +2294,57 @@ body.scrolled .menu-toggle span {
   direction: ltr;
 }
 
-@media (max-width: 768px) {
+/* =====================================
+   SPLIT SECTIONS RESPONSIVE MOBILE
+===================================== */
 
+@media (max-width: 900px) and (orientation: landscape) {
   .split-row {
-    grid-template-columns: 1fr;
-    min-height: auto;
+    grid-template-columns: 1fr 1fr;
+    height: auto !important;
+    min-height: 300px;
+  }
+
+  .split-image img {
+    max-height: none !important;
+    height: 100%;
+    object-fit: cover;
   }
 
   .split-text {
-    padding: 40px 20px;
+    padding: 30px 40px;
+    height: 100%;
+  }
+
+  .split-text p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) and (orientation: portrait) {
+  .split-row {
+    grid-template-columns: 1fr;
+    height: auto !important;
+    min-height: auto;
+  }
+
+  .split-image img {
+    max-height: 35vh !important;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .split-text {
+    padding: 40px 25px;
     text-align: center;
     align-items: center;
+    height: auto;
   }
 
   .split-text p {
     max-width: 100%;
     margin: 0;
+    font-size: 18px;
   }
 
   /* desactivamos el espejo en mobile */
@@ -2222,6 +2425,56 @@ body.scrolled .menu-toggle span {
   }
 }
 
+/* Descripción General Centrada */
+.description-section {
+  padding: 100px 80px 20px 80px;
+  text-align: center;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.description-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #111;
+  margin-bottom: 50px;
+}
+
+.description-inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.description-text {
+  max-width: 900px;
+  margin: 0 auto;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #333;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .description-section {
+    padding: 60px 40px 10px 40px;
+  }
+
+  .description-title {
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+
+  .description-text {
+    font-size: 15px;
+  }
+}
+
 /* ==============================
    PAGINA PROYECTO TIPO
 ============================== */
@@ -2248,7 +2501,7 @@ body.scrolled .menu-toggle span {
 ============================== */
 
 .project-gallery {
-  --gap: 1rem;
+  --gap: var(--gallery-gap, 10px);
 
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -2267,6 +2520,7 @@ body.scrolled .menu-toggle span {
   width: 100%;
   height: auto;
   display: block;
+  margin-bottom: 0;
 }
 
 /* Imagen destacada */
@@ -2299,5 +2553,301 @@ body.scrolled .menu-toggle span {
 
   .project-gallery .is-wide {
     grid-column: span 1;
+  }
+}
+
+/* ============================
+   LIGHTBOX
+============================ */
+
+#lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(255, 255, 255, 0.98);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+#lightbox.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#lightbox figure {
+  max-width: 90vw;
+  max-height: 90vh;
+  margin: 0;
+  position: relative;
+}
+
+#lightbox img {
+  max-width: 100%;
+  max-height: 90vh;
+  object-fit: contain;
+  display: block;
+  user-select: none;
+}
+
+/* BOTONES */
+.lightbox-btn {
+  position: absolute;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 20px;
+  z-index: 10001;
+  color: #111;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-btn:hover {
+  opacity: 0.7;
+}
+
+.lightbox-btn svg {
+  width: 32px;
+  height: 32px;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  fill: none;
+}
+
+.lightbox-close {
+  top: 20px;
+  right: 20px;
+}
+
+.lightbox-prev {
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.lightbox-next {
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@media (max-width: 768px) {
+  .lightbox-btn svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .lightbox-prev,
+  .lightbox-next {
+    padding: 10px;
+  }
+}
+
+/* =====================================================
+   PROYECTO DETALLE - NUEVA ESTRUCTURA (SIDEBAR + CONTENIDO)
+   ===================================================== */
+
+.project-summary-grid {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  /* Columna fija datos, resto memoria */
+  gap: 80px;
+  margin-top: 60px;
+  margin-bottom: 100px;
+  align-items: start;
+}
+
+/* Columna Izquierda: Datos */
+.project-info-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  /* Espacio entre bloques de datos */
+}
+
+/* COLUMNA IZQUIERDA: INFO */
+.contact-info-col {
+  padding-top: 0px;
+}
+
+.contact-main-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: #000;
+  text-transform: uppercase;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  /* Reduced to fit description */
+  letter-spacing: -0.02em;
+}
+
+.contact-description {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #000;
+  margin-bottom: 40px;
+  /* "Margen de aire" requested */
+  max-width: 400px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.contact-icon {
+  width: 24px;
+  height: 24px;
+  stroke: #346240;
+  /* Green (Default for Email) */
+  flex-shrink: 0;
+}
+
+/* Specific for Phones: Black Icon */
+.contact-phones .contact-icon {
+  stroke: #000;
+}
+
+.contact-email-link {
+  color: #346240;
+  /* Green */
+  font-weight: 300;
+  /* Thin */
+  text-decoration: none;
+  font-size: 16px;
+  font-family: 'Inter', sans-serif;
+}
+
+.contact-phone-link {
+  color: #000;
+  /* Black */
+  font-weight: 300;
+  /* Thin */
+  text-decoration: none;
+  font-size: 16px;
+  font-family: 'Inter', sans-serif;
+}
+
+.contact-email-link:hover,
+.contact-phone-link:hover {
+  text-decoration: underline;
+}
+
+.contact-details p {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  margin-bottom: 12px;
+  color: #000;
+  font-weight: 400;
+}
+
+.contact-phones {
+  margin-top: 40px;
+  /* Matching the paragraph gap */
+}
+
+/* Bloque individual de datos */
+.info-block strong {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #111;
+  margin-bottom: 4px;
+}
+
+.info-block span {
+  display: block;
+  font-size: 14px;
+  color: #555;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+/* Columna Derecha: Memoria */
+.project-text-content {
+  max-width: 800px;
+  /* Evita que el texto se estire demasiado */
+}
+
+.project-text-content p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #333;
+  margin-bottom: 24px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .project-summary-grid {
+    grid-template-columns: 1fr;
+    gap: 60px;
+    margin-top: 40px;
+  }
+
+  .project-info-sidebar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* En tablet, datos a 2 columnas */
+    gap: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .project-info-sidebar {
+    grid-template-columns: 1fr;
+    /* En móvil, datos apilados */
+    gap: 24px;
+  }
+}
+
+/* ============================
+   LIGHTBOX - MOBILE PORTRAIT ARROWS
+============================ */
+
+@media (max-width: 768px) and (orientation: portrait) {
+  #lightbox figure {
+    max-height: 75vh;
+    /* Leave room for arrows at bottom */
+  }
+
+  .lightbox-prev,
+  .lightbox-next {
+    top: auto;
+    bottom: 50px;
+    transform: none;
+    background: rgba(255, 255, 255, 0.8);
+    /* Optional: distinct click area */
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+  }
+
+  .lightbox-prev {
+    left: calc(50% - 60px);
+  }
+
+  .lightbox-next {
+    right: auto;
+    left: calc(50% + 12px);
+  }
+
+  .lightbox-btn svg {
+    width: 36px;
+    height: 36px;
+    stroke: #000;
+    /* Explicitly black */
   }
 }

@@ -32,11 +32,10 @@
 
       <!-- NAV -->
       <nav class="nav">
-        <a href="/index.html#equipo">Nosotros</a>
-        <a href="/index.html#servicios">Servicios</a>
-        <a href="/proyectos.html">Proyectos</a>
-        <a href="/index.html#contacto">Contacto</a>
-
+        <a href="index.html#servicios">Servicios</a>
+        <a href="proyectos.html">Proyectos</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="#contacto">Contacto</a>
       </nav>
 
     </div>
@@ -45,76 +44,111 @@
   <!-- CONTACTO -->
   <section id="contacto" class="contact-section-landing">
 
-    <!-- TEXTO VISIBLE SIEMPRE -->
-    <div class="contact-intro">
-      <h2>Escríbenos para cotizar tu proyecto</h2>
+    <div class="contact-container">
+
+      <!-- COLUMNA IZQUIERDA: INFORMACIÓN -->
+      <div class="contact-info-col">
+        <h1 class="contact-main-title">CONTÁCTANOS</h1>
+
+        <p class="contact-description">
+          Envíenos un mensaje para iniciar la conversación o simplemente envíe un correo electrónico a:
+        </p>
+
+        <div class="contact-details">
+          <div class="contact-item">
+            <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <a href="mailto:info@studiotratto.cl" class="contact-email-link">info@studiotratto.cl</a>
+          </div>
+
+          <div class="contact-phones">
+            <div class="contact-item">
+              <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                </path>
+              </svg>
+              <a href="tel:+56976609114" class="contact-phone-link">+56 9 76609114</a>
+            </div>
+            <div class="contact-item">
+              <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                </path>
+              </svg>
+              <a href="tel:+56961977191" class="contact-phone-link">+56 9 61977191</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- COLUMNA DERECHA: FORMULARIO -->
+      <div class="contact-form-col">
+
+        <div class="contact-form-wrapper open" id="contactForm"> <!-- 'open' para que se vea siempre -->
+
+          <form class="contact-form" action="https://formsubmit.co/info@studiotratto.cl" method="POST">
+            <input type="hidden" name="_subject" value="Nuevo contacto desde la web">
+            <input type="hidden" name="_template" value="box">
+
+            <div class="form-row">
+              <h4>Tipo de proyecto*</h4>
+              <select name="tipo_proyecto" required>
+                <option>Proyecto desde cero</option>
+                <option>Remodelación</option>
+                <option>Regularización</option>
+                <option>Asesoría técnica</option>
+              </select>
+            </div>
+
+            <div class="form-grid">
+              <input type="text" name="nombre" placeholder="Nombre*" required>
+              <input type="email" name="correo" placeholder="Correo*" required>
+              <input type="tel" name="movil" placeholder="Móvil*" required>
+            </div>
+
+            <div class="form-row">
+              <h4>Región*</h4>
+              <select name="region" required>
+                <option>Arica y Parinacota</option>
+                <option>Tarapacá</option>
+                <option>Antofagasta</option>
+                <option>Atacama</option>
+                <option>Coquimbo</option>
+                <option>Valparaíso</option>
+                <option>Metropolitana</option>
+                <option>Libertador General Bernardo O'Higgins</option>
+                <option>Maule</option>
+                <option>Ñuble</option>
+                <option>Biobío</option>
+                <option>Los Ríos</option>
+                <option>Los Lagos</option>
+                <option>Aysén del General Carlos Ibañez del Campo</option>
+                <option>Magallanes y Antártica Chilena</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <input type="text" name="comuna" placeholder="Comuna*" required>
+            </div>
+
+            <div class="form-row">
+              <textarea name="mensaje" placeholder="Cuéntanos sobre tu proyecto"></textarea>
+            </div>
+
+            <button type="submit">Enviar →</button>
+
+          </form>
+
+        </div>
+      </div>
+
     </div>
-
-    <!-- FORMULARIO OCULTO -->
-    <div class="contact-form-wrapper" id="contactForm">
-
-      <form class="contact-form" action="mailto:contacto@estudiotratto.cl" method="POST" enctype="text/plain">
-
-        <div class="form-row">
-          <h4>Tipo de proyecto*</h4>
-          <select name="tipo_proyecto" required>
-            <option>Proyecto desde cero</option>
-            <option>Remodelación</option>
-            <option>Regularización</option>
-            <option>Asesoría técnica</option>
-          </select>
-        </div>
-
-        <div class="form-grid">
-          <input type="text" name="nombre" placeholder="Nombre*" required>
-
-          <input type="email" name="correo" placeholder="Correo*" required>
-
-          <input type="tel" name="movil" placeholder="Móvil*" required>
-        </div>
-
-
-
-        <div class="form-row">
-          <h4>Región*</h4>
-          <select name="region" required>
-            <option>Arica y Parinacota</option>
-            <option>Tarapacá</option>
-            <option>Antofagasta</option>
-            <option>Atacama</option>
-            <option>Coquimbo</option>
-            <option>Valparaíso</option>
-            <option>Metropolitana</option>
-            <option>Libertador General Bernardo O'Higgins</option>
-            <option>Maule</option>
-            <option>Ñuble</option>
-            <option>Biobío</option>
-            <option>Los Ríos</option>
-            <option>Los Lagos</option>
-            <option>Aysén del General Carlos Ibañez del Campo</option>
-            <option>Magallanes y Antártica Chilena</option>
-          </select>
-        </div>
-
-        <div class="form-row">
-          <input type="text" name="comuna" placeholder="Comuna*" required>
-        </div>
-
-        <div class="form-row">
-          <textarea name="mensaje" placeholder="Cuéntanos sobre tu proyecto"></textarea>
-        </div>
-
-        <button type="submit">Enviar →</button>
-
-      </form>
-
-    </div>
-
-
-
-
-
-
 
   </section>
 
@@ -126,21 +160,21 @@
       <div class="footer-left">
         <img src="images/logo-tratto-footer.svg" class="logofooter">
         <div class="footer-social">
-          <a href="https://www.instagram.com/nicolas.moralesu/" target="_blank"><img src="images/rrss-08.svg"
+          <a href="https://www.instagram.com/studiotratto_cl/" target="_blank"><img src="images/rrss-08.svg"
               alt="Instagram"></a>
         </div>
       </div>
       <div class="footer-right">
         <ul class="footer-links">
-          <li><a href="#equipo">NOSOTROS</a></li>
-          <li><a href="#servicios">SERVICIOS</a></li>
-          <li><a href="#proyectos">PROYECTOS</a></li>
-          <li><a href="#contacto">CONTACTO</a></li>
+          <li><a href="index.html#servicios">SERVICIOS</a></li>
+          <li><a href="proyectos.html">PROYECTOS</a></li>
+          <li><a href="nosotros.html">NOSOTROS</a></li>
+          <li><a href="contacto.html">CONTACTO</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-credits">
-      <p>© 2026. Nicolas Morales - Studio Tratto.</p>
+      <p>© 2026. Nicolás Morales - Studio Tratto.</p>
     </div>
   </footer>
 

@@ -10,7 +10,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const total = parseInt(gallery.dataset.total, 10);
 
   // 👉 imágenes destacadas (2 columnas)
-  const wideImages = [5, 7, 12];
+  const wideImages = [1, 4, 7];
+
+  // Array para guardar las rutas de las imágenes para el lightbox
+  const imagesList = [];
 
   // ===============================
   // 1️⃣ CREAR IMÁGENES
@@ -22,10 +25,17 @@ document.addEventListener("DOMContentLoaded", () => {
       figure.classList.add("is-wide");
     }
 
+    const imgSrc = `../images/${project}/${String(i).padStart(2, "0")}.jpg`;
+    imagesList.push(imgSrc);
+
     const img = document.createElement("img");
-    img.src = `../images/${project}/${String(i).padStart(2, "0")}.jpg`;
+    img.src = imgSrc;
     img.alt = `Casa GA – Imagen ${i}`;
     img.loading = "lazy";
+
+    // Al hacer click, abrir lightbox
+    img.style.cursor = "pointer";
+    img.addEventListener("click", () => openLightbox(i - 1));
 
     figure.appendChild(img);
     gallery.appendChild(figure);
@@ -40,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
     const gap = parseInt(
       getComputedStyle(gallery).getPropertyValue("gap")
-    );
+    ) || 10;
 
     const img = item.querySelector("img");
     if (!img.complete) return;
@@ -57,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ===============================
-  // 3️⃣ CALCULAR AL CARGAR IMÁGENES
+  // 3️⃣ INIT MASONRY
   // ===============================
   gallery.querySelectorAll("img").forEach(img => {
     img.onload = () => {
@@ -65,13 +75,88 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   });
 
-  // ===============================
-  // 4️⃣ RECALCULAR AL REDIMENSIONAR
-  // ===============================
   window.addEventListener("resize", () => {
     resizeAllMasonryItems();
   });
+
+  // ===============================
+  // 4️⃣ LIGHTBOX LOGIC
+  // ===============================
+
+  // Inject Lightbox HTML
+  const lightboxHTML = `
+    <div id="lightbox">
+      <button class="lightbox-btn lightbox-close" aria-label="Cerrar">
+        <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="lightbox-btn lightbox-prev" aria-label="Anterior">
+        <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="lightbox-btn lightbox-next" aria-label="Siguiente">
+        <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <figure>
+        <img src="" alt="Lightbox image">
+      </figure>
+    </div>
+  `;
+  document.body.insertAdjacentHTML("beforeend", lightboxHTML);
+
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = lightbox.querySelector("img");
+  const btnClose = lightbox.querySelector(".lightbox-close");
+  const btnPrev = lightbox.querySelector(".lightbox-prev");
+  const btnNext = lightbox.querySelector(".lightbox-next");
+
+  let currentIndex = 0;
+
+  function openLightbox(index) {
+    currentIndex = index;
+    updateLightboxImage();
+    lightbox.classList.add("active");
+    document.body.style.overflow = "hidden"; // Disable scroll
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove("active");
+    document.body.style.overflow = ""; // Enable scroll
+  }
+
+  function updateLightboxImage() {
+    lightboxImg.src = imagesList[currentIndex];
+  }
+
+  function nextImage(e) {
+    if (e) e.stopPropagation();
+    currentIndex = (currentIndex + 1) % imagesList.length;
+    updateLightboxImage();
+  }
+
+  function prevImage(e) {
+    if (e) e.stopPropagation();
+    currentIndex = (currentIndex - 1 + imagesList.length) % imagesList.length;
+    updateLightboxImage();
+  }
+
+  // Event Listeners
+
+  // Buttons
+  btnClose.addEventListener("click", closeLightbox);
+  btnNext.addEventListener("click", nextImage);
+  btnPrev.addEventListener("click", prevImage);
+
+  // Background click to close (optional, user didn't explicitly ask but it's standard)
+  /* lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) closeLightbox();
+  }); */
+
+  // Keyboard navigation
+  document.addEventListener("keydown", (e) => {
+    if (!lightbox.classList.contains("active")) return;
+
+    if (e.key === "Escape") closeLightbox();
+    if (e.key === "ArrowRight") nextImage();
+    if (e.key === "ArrowLeft") prevImage();
+  });
+
 });
-
-
-
